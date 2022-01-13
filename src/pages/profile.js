@@ -1,7 +1,7 @@
 import { faSave } from "@fortawesome/free-regular-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Container, Row, Col, Form, Button } from "react-bootstrap"
-import { GetUser, UpdatePsd, UpdateUser } from "../api/api"
+import { GetUser, UpdatePsd, UpdateUser, GetImage } from "../api/api"
 
 // import CustomerSidebar from "../components/CustomerSidebar"
 import CollectionBar from "./../components/ViewsComponents/CollectionBar"
@@ -202,7 +202,7 @@ export default function Profile(props) {
               </div>
             </Col>
 
-            <CollectionBar avatar={_avatar} name={_name} email={_email} userid={props.userid}/>
+            <CollectionBar avatar={GetImage(_avatar)} name={_name} email={_email} userid={props.userid}/>
           </Row>
         </Container>
       </section>

@@ -51,7 +51,7 @@ const SwiperGallery = ({ data, vertical }) => {
 
   const customStyles = {
     overlay: {
-      zIndex: "1030",
+      zIndex: "1",
     },
     bodyOpen: {
       position: "fixed",

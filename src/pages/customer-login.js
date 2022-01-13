@@ -10,8 +10,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSignInAlt } from "@fortawesome/free-solid-svg-icons"
 import { faUser } from "@fortawesome/free-regular-svg-icons"
 import { useState } from "react"
-import {PostLogin, PostRegister} from '../api/api'
-import { useRouter } from "next/router";
+import { PostLogin, PostRegister } from "../api/api"
+import { useRouter } from "next/router"
+import { notification } from "antd"
 
 export async function getStaticProps() {
   return {
@@ -28,24 +29,44 @@ export default function CustomerLogin() {
   const [_email, setEmail] = useState("")
   const [_password, setPassword] = useState("")
   const [_imageSrc, setImageSrc] = useState("")
-  const router = useRouter();
+  const router = useRouter()
   const onLogin = (email, psd) => {
     postLogin(email, psd)
   }
 
   const postLogin = async (email, psd) => {
-    // const json = await PostLogin(email, psd);
-    // console.log(json)
-    router.push("/collection?uid=123")
+    if (email === '') {
+      return notification.error({
+        message: 'Email not Empty',
+        placement: 'bottomRight',
+      })
+    }
+
+    if (psd === '') {
+      return notification.error({
+        message: 'Password Not Empty',
+        placement: 'bottomRight',
+      })
+    }
+    const json = await PostLogin(email, psd)
+    if (json.msg) {
+      notification.error({
+        message: json.msg,
+        placement: 'bottomRight',
+      })
+    } else {
+      router.push(`/collection?uid=${json.userid}`)
+    }
   }
 
   const postRegister = async (src, name, email, password) => {
     const json = await PostRegister(src, name, email, password)
     console.log(json)
+    router.push(`/collection?uid=${json.userid}`)
   }
 
   const onRegister = (src, name, email, password) => {
-    postRegister(src, name, email, password);
+    postRegister(src, name, email, password)
   }
 
   const onGetImage = (e) => {
@@ -163,7 +184,12 @@ export default function CustomerLogin() {
                     <Form.Control id="passwordRegister" type="password" />
                   </div>
                   <div className="mb-4">
-                    <Button variant="outline-dark" onClick={() => onRegister(_imageSrc, 'Juice', '123@gmail.com', '111')}>
+                    <Button
+                      variant="outline-dark"
+                      onClick={() =>
+                        onRegister(_imageSrc, "Juice", "123@gmail.com", "111")
+                      }
+                    >
                       <FontAwesomeIcon icon={faUser} className="me-2" />
                       Register
                     </Button>

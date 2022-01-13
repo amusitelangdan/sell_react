@@ -3,6 +3,7 @@ import "swiper/css/bundle"
 import "../../public/fonts/hkgrotesk/stylesheet.css"
 import "react-image-lightbox/style.css"
 import "../scss/style.default.scss"
+import "antd/lib/style/index.css";
 
 const App = ({ Component, pageProps }) => {
   return (

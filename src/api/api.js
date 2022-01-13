@@ -1,12 +1,14 @@
 /*
  * @Author: your name
  * @Date: 2022-01-12 14:55:07
- * @LastEditTime: 2022-01-12 21:19:58
+ * @LastEditTime: 2022-01-13 21:13:31
  * @LastEditors: Please set LastEditors
  * @Description: api 文档
  * @FilePath: /sell-react-2-0(1)/src/api/api.js
  */
 import fetch from "isomorphic-unfetch"
+import React from "react"
+import { message } from "antd"
 
 const baseURL = "http://45.63.15.204:8001"
 
@@ -17,7 +19,7 @@ export const getBanner = async () => {
 }
 
 export const getNfts = async (page = 1) => {
-  const res = await fetch(`${baseURL}/api/nfts?page=${page}`)
+  const res = await fetch(`${baseURL}/api/nfts?page=${page}&size=20`)
   const json = await res.json()
   return json
 }
@@ -48,10 +50,8 @@ export const PostLogin = async (email, psd) => {
   })
   if (res.status === 200) {
     const json = await res.json()
+    sessionStorage.setItem("user", JSON.stringify(json))
     return json
-  } else {
-    alert("登录失败")
-    return null
   }
 }
 
@@ -83,7 +83,17 @@ export const UpdateUser = async (userid, email, name) => {
 }
 
 export const GetShopDetail = async (shopid) => {
-  const res = await fetch(`${baseURL}/api/shop_detail?shopid=${shopid}`)
+  const res = await fetch(`${baseURL}/api/shop_detail?shop_id=${shopid}`)
   const json = await res.json()
   return json
+}
+
+export const GetUserInfo = async (userid) => {
+  const res = await fetch(`${baseURL}/api/get_user?userid=${userid}`)
+  const json = await res.json()
+  return json
+}
+
+export const GetImage = (src) => {
+  return `${baseURL}${src}`
 }

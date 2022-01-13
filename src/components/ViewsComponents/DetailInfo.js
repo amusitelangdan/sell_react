@@ -26,7 +26,7 @@ const DetailInfo = ({ data }) => {
           {"("}$ {data.price}{")"}
         </div>
       </div>
-      <Button variant="dark" size="small" className="mb-1" style={{marginTop: 30}}>
+      <Button variant="dark" size="small" className="mb-1" onClick={() => {window.location.href = data.make_an_offer}} style={{marginTop: 30}}>
         <img src={'/img/label1.png'} className="price4"/>
         {/* <FontAwesomeIcon icon={faShoppingCart} className="me-2" /> */}
         go to make an offer

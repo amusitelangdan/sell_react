@@ -11,7 +11,7 @@ import products from "../data/products.json"
 import data from "../data/collection.json"
 import ShopPagination from "../components/ShopPagination"
 import { useEffect, useState } from "react"
-import { getCollection } from '../api/api'
+import { getCollection, GetImage, GetUserInfo } from '../api/api'
 import { useRouter } from 'next/router';
 
 export async function getServerSideProps(context) {
@@ -22,7 +22,8 @@ export async function getServerSideProps(context) {
   }
   if (context.query.uid) {
     options.userid = context.query.uid
-    const json = await getCollection(options.type, options.page, options.size, options.userid)
+    const json = await getCollection(options.type, options.page, options.size, options.userid);
+    const json2 = await GetUserInfo(options.userid);
     return {
       props: {
         list: json.list,
@@ -31,6 +32,7 @@ export async function getServerSideProps(context) {
         total: json.total,
         type: "collection",
         userid: options.userid,
+        userInfo: json2,
       },
     }
   } else {
@@ -56,6 +58,7 @@ export default function Collection(props) {
   const [_userid, setUserid] = useState(props.userid)
   const router = useRouter();
   useEffect(() => {
+    console.log(props);
     if (props.list) {
       setNefts(props.list)
     }
@@ -142,7 +145,7 @@ export default function Collection(props) {
               {_nefts.map((item, index) => (
                 <Col key={index} sm="6" xl="4">
                   <CardComponent
-                  onClick={(v) => {router.push('/detail?id=123')}}
+                  onClick={(v) => {router.push(`/detail?id=${v.id}`)}}
                     data={{
                       image: `http://45.63.15.204:8001/${item.imgSrc}`,
                       title: item.meta_title,
@@ -153,6 +156,7 @@ export default function Collection(props) {
                       last_price: item.last_price,
                       author_src: `http://45.63.15.204:8001/${item.author_src}`,
                       author: item.author,
+                      id: item.id
                     }}
                   />
                 </Col>
@@ -168,7 +172,7 @@ export default function Collection(props) {
               onNext={(v) => onNext(v, _type)}
             />
           </Col>
-          <CollectionBar />
+          <CollectionBar name={props.userInfo.name} email={props.userInfo.email} avatar={GetImage(props.userInfo.avatar)} userid={props.userid}/>
         </Row>
       </Container>
     </>

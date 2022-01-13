@@ -8,21 +8,20 @@ import { Pagination } from "swiper"
 import productData from "../data/dummyproduct.json"
 import { Swiper, SwiperSlide } from "swiper/react"
 import Image from "../components/CustomImage"
-import { GetShopDetail } from "../api/api"
+import { GetShopDetail, GetImage } from "../api/api"
 import DetailInfo from "./../components/ViewsComponents/DetailInfo"
 import DetailTabs1 from "./../components/ViewsComponents/DetailTabs1"
 import DetailTabs2 from "./../components/ViewsComponents/DetailTabs2"
 import DetailTabs3 from "./../components/ViewsComponents/DetailTabs3"
 import { useState } from "react"
 export async function getServerSideProps(context) {
-  console.log(context.query)
   let info = {}
   if (context.query.id) {
     const res = await GetShopDetail(context.query.id)
     console.log(res, 'ressss')
     info.author = res.author
-    info.author_src = res.author_src
-    info.image_src = res.image_src
+    info.author_src = GetImage(res.author_src)
+    info.image_src = GetImage(res.image_src)
     info.make_an_offer = res.make_an_offer
     info.nfts_price = res.nfts_price
     info.shop_title = res.shop_title
@@ -32,7 +31,6 @@ export async function getServerSideProps(context) {
     info.star = res.star
     if (res.roblox.roblox_data) {
       info.roblox_data = JSON.parse(JSON.stringify(res.roblox.roblox_data))
-      console.log(info.roblox_data)
     }
     if (res.nft_data) {
       info.nft_data = res.nft_data;
@@ -41,7 +39,7 @@ export async function getServerSideProps(context) {
       info.description = res.roblox.description;
     }
     if (res.roblox.comments) {
-      info.comments = res.roblox.comments;
+      info.comments = JSON.parse(JSON.stringify(res.roblox.comments));
     }
     if (res.trading_info.price_history) {
       info.price_history = JSON.parse(
@@ -86,7 +84,7 @@ export async function getServerSideProps(context) {
 }
 
 export default function MyDetail(props) {
-  console.log(props)
+  // console.log(props)
   const [_author, setAuthor] = useState(props.info?.author)
   const [_authorSrc, setAuthorSrc] = useState(props.info?.author_src)
   return (
@@ -110,7 +108,18 @@ export default function MyDetail(props) {
                       dynamicBullets: true,
                     }}
                   >
-                    {productData.img.detail.map((image, index) => (
+                    <SwiperSlide>
+                        <div className="detail-full-item bg-cover">
+                          <Image
+                            src={props.info.image_src}
+                            alt="..."
+                            layout="fill"
+                            className="bg-image"
+                            priority
+                          />
+                        </div>
+                      </SwiperSlide>
+                    {/* {productData.img.detail.map((image, index) => (
                       <SwiperSlide key={index}>
                         <div className="detail-full-item bg-cover">
                           <Image
@@ -122,7 +131,7 @@ export default function MyDetail(props) {
                           />
                         </div>
                       </SwiperSlide>
-                    ))}
+                    ))} */}
                   </Swiper>
                 </Col>
                 <Col
@@ -148,6 +157,7 @@ export default function MyDetail(props) {
                         shop_title: props.info?.shop_title,
                         star: props.info?.star,
                         views: props.info?.views,
+                        make_an_offer: props.info?.make_an_offer,
                       }}
                     />
                     {/* <DetailMain product={productData} /> */}

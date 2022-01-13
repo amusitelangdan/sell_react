@@ -19,6 +19,7 @@ export async function getServerSideProps(context) {
     options.page = 1
   }
   const json2 = await getNfts(options.page)
+  console.log(json2);
   return {
     props: {
       nav: {
@@ -144,7 +145,7 @@ export default function Home(props) {
                   <Col sm="6" xl="3" md="3" lg="3" key={index}>
                     <CardComponent
                       onClick={(v) => {
-                        router.push('/detail?id=123')
+                        router.push(`/detail?id=${v.id}`)
                       }}
                       data={{
                         image: `http://45.63.15.204:8001/${item.imgSrc}`,
@@ -156,6 +157,7 @@ export default function Home(props) {
                         last_price: item.last_price,
                         author_src: `http://45.63.15.204:8001/${item.author_src}`,
                         author: item.author,
+                        id: item.id
                       }}
                     />
                   </Col>

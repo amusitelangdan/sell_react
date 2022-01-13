@@ -161,8 +161,9 @@ const DetailTabs1 = ({
             <Tab.Pane eventKey="third">
               <Row className="mb-5">
                 <Col lg="10" xl="9">
+                  {comments}
                   {
-                    comments.map((item, index) => <div key={index}>{item}</div>)
+                    // comments.map((item, index) => <div key={index}>{item}</div>)
                   }
                 </Col>
               </Row>
