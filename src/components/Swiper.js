@@ -73,13 +73,14 @@ export default function SwiperComponent(props) {
             }}
           >
             {slide.img && (
-              <Image
-                src={slide.img}
-                className="bg-image"
-                layout="fill"
-                alt="..."
-                loading={props.eager && index === 0 ? "eager" : "lazy"}
-              />
+              // <Image
+              //   src={slide.img}
+              //   className="bg-image"
+              //   layout="fill"
+              //   alt="..."
+              //   loading={props.eager && index === 0 ? "eager" : "lazy"}
+              // />
+              <img src={slide.img} className="bg-image" />
             )}
             <Container
               fluid={props.containerFluid}

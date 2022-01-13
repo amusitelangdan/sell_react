@@ -110,7 +110,7 @@ export default function MyDetail(props) {
                   >
                     <SwiperSlide>
                         <div className="detail-full-item bg-cover">
-                          <Image
+                          <img
                             src={props.info.image_src}
                             alt="..."
                             layout="fill"

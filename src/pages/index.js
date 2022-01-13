@@ -54,7 +54,7 @@ export default function Home(props) {
       const _image_list = []
       image_list.forEach((_item) => {
         const item = {}
-        item.img = `http://45.63.15.204:8001/${_item.imgSrc}`
+        item.img = `http://45.63.15.204:8001${_item.imgSrc}`
         item.name = "Discover，collect，and sell extraordinary NFTS"
         item.text = "OpenSea is the world’s first and largest NFT marketplace."
         item.button = "LEARN MORE ABOUT META YEARING"

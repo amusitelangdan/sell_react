@@ -91,7 +91,7 @@ const CardComponent = ({ data, onClick = () => {} }) => {
     <>
       <div className="card-item">
         <div className="card_item_top">
-          <Image
+          {/* <Image
             src={data.image}
             className="card-img"
             layout="responsive"
@@ -99,8 +99,17 @@ const CardComponent = ({ data, onClick = () => {} }) => {
             height={306}
             alt={data.title}
             priority
+          /> */}
+          <img
+            src={data.image}
+            className="card-img"
+            style={{ width: 306, height: 306 }}
           />
-          <div className="card-image-mask" onClick={() => onClick(data)}  style={{cursor: 'pointer'}}>
+          <div
+            className="card-image-mask"
+            onClick={() => onClick(data)}
+            style={{ cursor: "pointer" }}
+          >
             <div className="card-image-mask-item">
               <div className="card_image_top_item">
                 {/* <Image
@@ -130,7 +139,11 @@ const CardComponent = ({ data, onClick = () => {} }) => {
         </div>
 
         <div className="card_item_bottom">
-          <h6 className="text-uppercase" onClick={() => onClick(data)} style={{cursor: 'pointer'}}>
+          <h6
+            className="text-uppercase"
+            onClick={() => onClick(data)}
+            style={{ cursor: "pointer" }}
+          >
             <a className="text-dark">{data.name}</a>
           </h6>
           <div className="card_item_bottom_desc">
