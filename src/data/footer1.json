@@ -1,0 +1,72 @@
+[
+    {
+      "title": "<div class='fw-bold text-uppercase text-lg text-dark mb-3'>meta yearning<span class='text-primary'>.</span></div>",
+      "logo": true,
+      "content": "Lorem",
+      "lg": "4"
+    },
+    {
+      "title": "marketplace",
+      "links": [
+        {
+          "title": "For Women",
+          "link": "/category"
+        },
+        {
+          "title": "For Men",
+          "link": "/category"
+        },
+        {
+          "title": "Stores",
+          "link": "/contact"
+        },
+        {
+          "title": "Our Blog",
+          "link": "/blog"
+        },
+        {
+          "title": "Shop",
+          "link": "/"
+        }
+      ],
+      "lg": "2",
+      "md": "6"
+    },
+    {
+      "title": "about us",
+      "links": [
+        {
+          "title": "Login",
+          "link": "/customer-login"
+        },
+        {
+          "title": "Register",
+          "link": "/customer-login"
+        },
+        {
+          "title": "Wishlist",
+          "link": "#"
+        },
+        {
+          "title": "Our Products",
+          "link": "/category"
+        },
+        {
+          "title": "Checkouts",
+          "link": "/checkout1"
+        }
+      ],
+      "lg": "2",
+      "md": "6"
+    },
+    {
+      "title": "Daily Offers & Discounts",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. At itaque temporibus.",
+      "contentBottomMargin": "3",
+      "form": {
+        "placeholder": "Your Email Address"
+      },
+      "lg": "4"
+    }
+  ]
+  

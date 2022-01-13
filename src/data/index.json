@@ -1,0 +1,71 @@
+{
+  "title": "Home",
+  "swiper": [
+    {
+      "name": "Discover，collect，and sell extraordinary NFTs",
+      "text": "OpenSea is the world’s first and largest NFT marketplace.",
+      "button": "LEARN MORE ABOUT META YEARING",
+      "link": "/category",
+      "img": "/img/photo/matheus-ferrero-334418-unsplash.jpg",
+      "subtitleclass": "text-uppercase text-white fw-light mb-4 letter-spacing-5",
+      "titleclass": "mb-5 display-2 fw-bold text-serif",
+      "rowclass": "align-items-center h-100 text-white text-center",
+      "itemclass": "home-full-item",
+      "contentclass": "mx-auto"
+    },
+    {
+      "name": "Skeleton Tees",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "button": "Start shopping",
+      "link": "/category-2",
+      "img": "/img/photo/ian-dooley-347942-unsplash.jpg",
+      "rowclass": "align-items-center h-100 text-white text-center",
+      "subtitleclass": "text-dark mb-3",
+      "titleclass": "mb-4 display-2 text-uppercase fw-bold",
+      "darkOverlay": true,
+      "itemclass": "home-full-item",
+      "contentclass": "mx-auto"
+    },
+    {
+      "name": "Skinny Jeans",
+      "subtitle": "Our bestseller",
+      "button": "View Collection",
+      "link": "/category",
+      "img": "/img/photo/haley-phelps-62815-unsplash.jpg",
+      "subtitleclass": "text-uppercase fw-light mb-4 letter-spacing-5",
+      "titleclass": "mb-5 display-1 fw-bold text-serif",
+      "rowclass": "align-items-center h-100 text-white text-center",
+      "darkOverlay": true,
+      "itemclass": "home-full-item",
+      "contentclass": "mx-auto"
+    }
+  ],
+  "lookbook": [
+    {
+      "title": "Top picks",
+      "link": "/category",
+      "image": "/img/photo/christopher-campbell-28571-unsplash.jpg"
+    },
+    {
+      "title": "New arrivals",
+      "link": "/category",
+      "image": "/img/photo/marco-xu-496929-unsplash.jpg"
+    },
+    {
+      "title": "Jackets",
+      "link": "/category",
+      "image": "/img/photo/benjamin-voros-260869-unsplash.jpg"
+    },
+    {
+      "title": "Lookbook",
+      "link": "/category",
+      "image": "/img/photo/malvestida-magazine-458585-unsplash.jpg"
+    },
+    {
+      "title": "Try this",
+      "link": "/category",
+      "image": "/img/photo/michael-frattaroli-221247-unsplash.jpg",
+      "textColor": "text-dark"
+    }
+  ]
+}

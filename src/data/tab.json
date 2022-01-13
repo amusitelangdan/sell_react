@@ -1,0 +1,20 @@
+[
+  {
+    "id": 0,
+    "name": "Collection",
+    "prevTitle": "Collection",
+    "nav": true
+  },
+  {
+    "id": 1,
+    "name": "Created",
+    "prevTitle": "Created",
+    "nav": true
+  },
+  {
+    "id": 2,
+    "name": "Favoriteo",
+    "prevTitle": "Back to the Delivery Method",
+    "nav": true
+  }
+]

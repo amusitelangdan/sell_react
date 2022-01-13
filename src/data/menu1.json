@@ -1,0 +1,380 @@
+
+[
+  {
+    "title": "META YEARNING",
+    "dropdown": [
+      {
+        "title": "Slider + broken grid",
+        "link": "/index-5",
+        "new": true
+      },
+      {
+        "title": "Fullscreen home + Lookbook",
+        "link": "/"
+      },
+      {
+        "title": "Split-screen home",
+        "link": "/index-2"
+      },
+      {
+        "title": "Classic home",
+        "link": "/index-3"
+      },
+      {
+        "title": "Parallax sections",
+        "link": "/index-4",
+        "new": true
+      }
+    ]
+  },
+  {
+    "title": "MARKET",
+    "dropdown": [
+      {
+        "title": "Category - left sidebar",
+        "link": "/category"
+      },
+      {
+        "title": "Category - right sidebar",
+        "link": "/category-right"
+      },
+      {
+        "title": "Category - no sidebar",
+        "link": "/category-no-sidebar"
+      },
+      {
+        "title": "Category - full width",
+        "link": "/category-full"
+      },
+      {
+        "title": "Category - masonry items",
+        "link": "/category-masonry"
+      },
+      {
+        "title": "Category - w/ banner",
+        "link": "/category-banner"
+      },
+      {
+        "title": "Product detail",
+        "link": "/detail-1"
+      },
+      {
+        "title": "Product detail - v.2",
+        "link": "/detail-2"
+      },
+      {
+        "title": "Product detail - v.3",
+        "link": "/detail-3",
+        "new": true
+      }
+    ]
+  },
+  {
+    "title": "Template",
+    "position": "static",
+    "megamenu": [
+      [
+        {
+          "title": "Homepage",
+          "links": [
+            {
+              "title": "Fullscreen home + Lookbook",
+              "link": "/",
+              "parent": "Home"
+            },
+            {
+              "title": "Split-screen home",
+              "link": "/index-2",
+              "parent": "Home"
+            },
+            {
+              "title": "Classic home",
+              "link": "/index-3",
+              "parent": "Home"
+            },
+            {
+              "title": "Parallax sections",
+              "link": "/index-4",
+              "parent": "Home",
+              "new": true
+            },
+            {
+              "title": "Slider + Broken grid",
+              "link": "/index-5",
+              "parent": "Home",
+              "new": true
+            }
+          ]
+        },
+        {
+          "title": "Shop",
+          "links": [
+            {
+              "title": "Category - left sidebar",
+              "link": "/category"
+            },
+            {
+              "title": "Category - right sidebar",
+              "link": "/category-right"
+            },
+            {
+              "title": "Category - no sidebar",
+              "link": "/category-no-sidebar"
+            },
+            {
+              "title": "Category - full width",
+              "link": "/category-full"
+            },
+            {
+              "title": "Category - masonry items",
+              "link": "/category-masonry"
+            },
+            {
+              "title": "Category - w/ banner",
+              "link": "/category-banner"
+            },
+            {
+              "title": "Product detail",
+              "link": "/detail-1"
+            },
+            {
+              "title": "Product detail - v.2",
+              "link": "/detail-2"
+            },
+            {
+              "title": "Product detail - v.3",
+              "link": "/detail-3"
+            }
+          ]
+        }
+      ],
+      [
+        {
+          "title": "Order process",
+          "links": [
+            {
+              "title": "Shopping cart",
+              "link": "/cart"
+            },
+
+            {
+              "title": "Checkout (5 steps)",
+              "link": "/checkout-1"
+            }
+          ]
+        },
+        {
+          "title": "Blog",
+          "links": [
+            {
+              "title": "Blog",
+              "link": "/blog"
+            },
+            {
+              "title": "Post",
+              "link": "/blog/[slug]",
+              "as": "/blog/best-books-about-fashion"
+            }
+          ]
+        }
+      ],
+      [
+        {
+          "title": "Pages",
+          "links": [
+            {
+              "title": "About us",
+              "link": "/about",
+              "new": true
+            },
+            {
+              "title": "About us v.2",
+              "link": "/about-2",
+              "new": true
+            },
+            {
+              "title": "Contact",
+              "link": "/contact",
+              "parent": "Contact"
+            },
+            {
+              "title": "Contact v.2 ",
+              "link": "/contact-2"
+            },
+            {
+              "title": "Text page",
+              "link": "/text"
+            },
+            {
+              "title": "F.A.Q.s",
+              "link": "/faq"
+            },
+            {
+              "title": "Coming soon",
+              "link": "/coming-soon"
+            },
+            {
+              "title": "404 page",
+              "link": "/404",
+              "new": true
+            }
+          ]
+        },
+        {
+          "title": "Customer",
+          "links": [
+            {
+              "title": "Login/sign up",
+              "link": "/customer-login"
+            },
+            {
+              "title": "Orders",
+              "link": "/customer-orders"
+            },
+            {
+              "title": "Order detail",
+              "link": "/customer-order"
+            },
+            {
+              "title": "Addresses",
+              "link": "/customer-addresses"
+            },
+            {
+              "title": "Profile",
+              "link": "/customer-account"
+            }
+          ]
+        }
+      ],
+      [
+        {
+          "title": "Documentation",
+          "links": [
+            {
+              "title": "Introduction",
+              "link": "/docs/introduction"
+            },
+            {
+              "title": "Directory structure",
+              "link": "/docs/directory-structure"
+            },
+            {
+              "title": "Next.js",
+              "link": "/docs/next"
+            },
+            {
+              "title": "Customizing CSS",
+              "link": "/docs/customizing-css"
+            },
+            {
+              "title": "Migration to v2",
+              "link": "/docs/migration-v2"
+            },
+            {
+              "title": "Credits",
+              "link": "/docs/credits"
+            },
+            {
+              "title": "Changelog",
+              "link": "/docs/changelog"
+            }
+          ]
+        },
+        {
+          "title": "Components",
+          "links": [
+            {
+              "title": "Bootstrap",
+              "link": "/docs/components-bootstrap"
+            },
+            {
+              "title": "Theme",
+              "link": "/docs/components-theme"
+            }
+          ]
+        }
+      ]
+    ],
+    "services": [
+      {
+        "title": "Free shipping & return",
+        "content": "Free Shipping over $300",
+        "icon": "delivery-time-1"
+      },
+      {
+        "title": "Money back guarantee",
+        "content": "30 Days Money Back",
+        "icon": "money-1"
+      },
+      {
+        "title": "020-800-456-747",
+        "content": "24/7 Available Support",
+        "icon": "customer-support-1"
+      },
+      {
+        "title": "Secure Payment",
+        "content": "Secure Payment",
+        "icon": "secure-payment-1"
+      }
+    ],
+    "image": "/img/megamenu.jpg"
+  },
+  {
+    "title": "Contact",
+    "link": "/contact"
+  },
+  {
+    "title": "Docs",
+    "hideToLoggedUser": true,
+    "dropdown": [
+      {
+        "title": "Documentation",
+        "links": [
+          {
+            "title": "Introduction",
+            "link": "/docs/introduction"
+          },
+          {
+            "title": "Directory structure",
+            "link": "/docs/directory-structure"
+          },
+          {
+            "title": "Next.js",
+            "link": "/docs/next"
+          },
+          {
+            "title": "Customizing CSS",
+            "link": "/docs/customizing-css"
+          },
+          {
+            "title": "Migration to v2",
+            "link": "/docs/migration-v2"
+          },
+          {
+            "title": "Credits",
+            "link": "/docs/credits"
+          },
+          {
+            "title": "Changelog",
+            "link": "/docs/changelog"
+          }
+        ]
+      },
+
+      {
+        "title": "Components",
+        "divider": true,
+        "links": [
+          {
+            "title": "Bootstrap",
+            "link": "/docs/components-bootstrap"
+          },
+          {
+            "title": "Theme",
+            "link": "/docs/components-theme"
+          }
+        ]
+      }
+    ]
+  }
+]

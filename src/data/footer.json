@@ -1,0 +1,20 @@
+[
+  {
+    "title": "<div class='fw-bold text-uppercase text-lg text-dark mb-3'>meta yearning<span class='text-primary'>.</span></div>",
+    "logo": true,
+    "content": "Lorem",
+    "lg": "4"
+  },
+  {
+    "title": "marketplace",
+    "links": [],
+    "lg": "2",
+    "md": "6"
+  },
+  {
+    "title": "about us",
+    "links": [],
+    "lg": "2",
+    "md": "6"
+  }
+]

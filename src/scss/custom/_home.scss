@@ -1,0 +1,39 @@
+/*
+* ===================================================
+*     Homepage Elements
+* ===================================================
+*/
+
+// Split-screen homepage
+
+.split-screen-column {
+  display: flex;
+  align-items: center;
+  background: center center $black no-repeat;
+  background-size: cover;
+  color: $white;
+  text-align: center;
+  height: auto;
+  @include media-breakpoint-up(lg) {
+    height: 100vh;
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  h1.split-screen-heading {
+    font-size: $h1-font-size * 0.5;
+  }
+  h2.split-screen-heading {
+    font-size: $h2-font-size * 0.5;
+  }
+  h3.split-screen-heading {
+    font-size: $h3-font-size * 0.5;
+  }
+}
+
+// Parallax homepage
+
+.parallax-section {
+  padding-top: 14rem;
+  padding-bottom: 14rem;
+}
