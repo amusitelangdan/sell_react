@@ -124,7 +124,7 @@ const Header = (props) => {
           } ${additionalNavClasses ? additionalNavClasses : ""} navbar-airy`}
           variant={props.nav.dark ? "dark" : "light"}
         >
-          <Container fluid>
+          <Container>
             <Navbar.Toggle
               onClick={() => setCollapsed(!collapsed)}
               className="navbar-toggler-right"
