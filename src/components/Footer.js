@@ -31,7 +31,7 @@ const Footer = () => {
 
       <div className="py-6 bg-gray-200 text-muted">
         <Container>
-          <Row>
+          <Row className="align-items-center" style={{width: '100%', justifyContent: 'space-between', padding: '0 0 0 25px'}}>
             {footerContent &&
               footerContent.map((item) => (
                 <Col
@@ -39,6 +39,7 @@ const Footer = () => {
                   lg={item.lg && item.lg}
                   md={item.md && item.md}
                   className="mb-5 mb-lg-0"
+                  style={{width: "fit-content"}}
                 >
                   <div className="fw-bold text-uppercase text-dark mb-3">
                     {item.logo ? (
@@ -148,7 +149,7 @@ const Footer = () => {
       </div>
       <div className="py-4 fw-light bg-gray-800 text-gray-300">
         <Container>
-          <Row className="align-items-center">
+          <Row className="align-items-center" style={{width: '100%', justifyContent: 'space-between'}}>
             <Col md="6" className="text-center text-md-start">
               <p className="text-sm mb-md-0">
                 © 2021, Your company. All rights reserved.
