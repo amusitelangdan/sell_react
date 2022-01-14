@@ -103,7 +103,7 @@ const CardComponent = ({ data, onClick = () => {} }) => {
           <img
             src={data.image}
             className="card-img"
-            style={{ width: 306, height: 306 }}
+            // style={{ width: 306, height: 306 }}
           />
           <div
             className="card-image-mask"
