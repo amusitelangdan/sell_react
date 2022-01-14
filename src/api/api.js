@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2022-01-12 14:55:07
- * @LastEditTime: 2022-01-14 16:16:09
+ * @LastEditTime: 2022-01-14 19:21:38
  * @LastEditors: Please set LastEditors
  * @Description: api 文档
  * @FilePath: /sell-react-2-0(1)/src/api/api.js
@@ -48,6 +48,7 @@ export const PostLogin = async (email, psd) => {
     method: "POST",
     body: JSON.stringify({ email: email, password: psd }),
   })
+  console.log(res)
   if (res.status === 200) {
     const json = await res.json()
     sessionStorage.setItem("user", JSON.stringify(json))

@@ -2,18 +2,7 @@
    "img": "/img/photo/kyle-loftus-589739-unsplash-avatar.jpg",
    "type": "avatar",
    "title": "Julie Lescaut",
-   "dropdown": [{
-         "title": "Orders",
-         "link": "/customer-orders"
-      },
-      {
-         "title": "Order detail",
-         "link": "/customer-order"
-      },
-      {
-         "title": "Addresses",
-         "link": "/customer-addresses"
-      },
+   "dropdown": [
       {
          "title": "Profile",
          "link": "/customer-account"

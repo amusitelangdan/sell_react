@@ -35,6 +35,7 @@ export async function getServerSideProps(context) {
       page: json2.page,
       size: json2.size,
       total: json2.total,
+      // loggedUser: true,
     },
   }
 }

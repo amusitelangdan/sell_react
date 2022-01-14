@@ -54,8 +54,13 @@ export default function CustomerLogin() {
         message: json.msg,
         placement: 'bottomRight',
       })
-    } else {
+    } else if (json.userid) {
       router.push(`/collection?uid=${json.userid}`)
+    } else {
+      notification.error({
+        message: ' Password or Email Error',
+        placement: 'bottomRight',
+      })
     }
   }
 

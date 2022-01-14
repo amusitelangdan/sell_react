@@ -33,6 +33,8 @@ export async function getServerSideProps(context) {
         type: "favorite",
         userid: options.userid,
         userInfo: json2,
+        loggedUser: true,
+        loggedUser_avatar: GetImage(json2.avatar)
       },
     }
   } else {

@@ -27,6 +27,7 @@ import Icons from "./Icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBars } from "@fortawesome/free-solid-svg-icons"
 import MegaMenu from "./MegaMenu"
+import LoginDrop from './Login';
 
 
 const Header = (props) => {
@@ -278,6 +279,7 @@ const Header = (props) => {
                 {/* Menu Icons */}
                 <Icons
                   loggedUser={props.loggedUser}
+                  loggedUser_avatar={props.loggedUser_avatar}
                   // searchToggle={searchToggle}
                   // setSearchToggle={setSearchToggle}
                 />

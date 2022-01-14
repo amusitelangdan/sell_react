@@ -9,8 +9,9 @@ import Hero from "../components/Hero"
 
 import data from "../data/profile.json"
 import { useEffect, useState } from "react"
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router"
 import { set } from "nprogress"
+import { notification } from "antd"
 
 // export async function getStaticProps() {
 //   return {
@@ -35,6 +36,8 @@ export async function getServerSideProps(context) {
         msg: json.msg,
         name: json.name,
         userid: context.query.uid,
+        loggedUser: true,
+        loggedUser_avatar: GetImage(json.avatar)
       },
     }
   } else {
@@ -44,7 +47,7 @@ export async function getServerSideProps(context) {
         email: "",
         msg: "login",
         name: "",
-        userid: '',
+        userid: "",
       },
     }
   }
@@ -52,50 +55,62 @@ export async function getServerSideProps(context) {
 
 export default function Profile(props) {
   console.log(props)
-  const router = useRouter();
-  const [_email, setEmail] = useState(props.email);
-  const [_name, setname] = useState(props.name);
-  const [_avatar, setavatar] = useState(props.avatar);
+  const router = useRouter()
+  const [_email, setEmail] = useState(props.email)
+  const [_name, setname] = useState(props.name)
+  const [_avatar, setavatar] = useState(props.avatar)
 
-  const [oldPsd, setOldPsd] = useState('');
-  const [newPsd, setNewPsd] = useState('');
-  const [enterPsd, setEnterPsd] = useState('');
-  const [emailI, setEmailI] = useState('');
-  const [nameI, setNameI] = useState('');
+  const [oldPsd, setOldPsd] = useState("")
+  const [newPsd, setNewPsd] = useState("")
+  const [enterPsd, setEnterPsd] = useState("")
+  const [emailI, setEmailI] = useState("")
+  const [nameI, setNameI] = useState("")
 
   const onChangePsd = async (_oldPsd, _newPsd, _enterPsd) => {
-    if (_oldPsd === '' || _newPsd === '' || _enterPsd === '') {
-      return alert(' password')
+    if (_oldPsd === "" || _newPsd === "" || _enterPsd === "") {
+      return notification.error({
+        message: " Not Empty",
+        placement: "bottomRight",
+      })
     }
     if (_oldPsd === _newPsd) {
-      return alert(' password')
+      return notification.error({
+        message: " Password Not Success",
+        placement: "bottomRight",
+      })
     }
 
     if (_enterPsd !== _newPsd) {
-      return alert(' password')
+      return notification.error({
+        message: "Enter PassWord Success",
+        placement: "bottomRight",
+      })
     }
-    const res = await UpdatePsd(props.userid, _oldPsd, _newPsd);
-    alert(res.msg);
+    const res = await UpdatePsd(props.userid, _oldPsd, _newPsd)
+    // alert(res.msg)
     // router.replace(`/profile?uid=${props.userid}`)
-    setOldPsd('')
-    setNewPsd('');
-    setEnterPsd('')
+    setOldPsd("")
+    setNewPsd("")
+    setEnterPsd("")
   }
 
   const onChangeUser = async (names, emails) => {
-    if (names === '' && emails === '') {
-      return alert('no empty!')
+    if (names === "" && emails === "") {
+      return notification.error({
+        message: 'No Empty',
+        placement: 'bottomRight',
+      })
     }
     const res = await UpdateUser(props.userid, emails, names)
-    alert(res.msg);
+    // alert(res.msg)
     // router.replace(`/profile?uid=${props.userid}`)
-    setNameI('')
-    setEmailI('')
+    setNameI("")
+    setEmailI("")
   }
 
   useEffect(() => {
-    if (props.msg === 'login') {
-      router.push('/customer-login')
+    if (props.msg === "login") {
+      router.push("/customer-login")
     }
   }, [props])
   return (
@@ -127,7 +142,12 @@ export default function Profile(props) {
                           >
                             Old password
                           </Form.Label>
-                          <Form.Control id="password_old" type="password" value={oldPsd} onChange={(e) => setOldPsd(e.target.value)} />
+                          <Form.Control
+                            id="password_old"
+                            type="password"
+                            value={oldPsd}
+                            onChange={(e) => setOldPsd(e.target.value)}
+                          />
                         </div>
                       </Col>
                     </Row>
@@ -140,7 +160,12 @@ export default function Profile(props) {
                           >
                             New password
                           </Form.Label>
-                          <Form.Control id="password_1" type="password" value={newPsd} onChange={(e) => setNewPsd(e.target.value)} />
+                          <Form.Control
+                            id="password_1"
+                            type="password"
+                            value={newPsd}
+                            onChange={(e) => setNewPsd(e.target.value)}
+                          />
                         </div>
                       </Col>
                       <Col sm="6">
@@ -151,12 +176,20 @@ export default function Profile(props) {
                           >
                             Retype new password
                           </Form.Label>
-                          <Form.Control id="password_2" type="password" value={enterPsd} onChange={(e) => setEnterPsd(e.target.value)} />
+                          <Form.Control
+                            id="password_2"
+                            type="password"
+                            value={enterPsd}
+                            onChange={(e) => setEnterPsd(e.target.value)}
+                          />
                         </div>
                       </Col>
                     </Row>
                     <div className="mt-4 text-center">
-                      <Button variant="dark" onClick={() => onChangePsd(oldPsd, newPsd, enterPsd)}>
+                      <Button
+                        variant="dark"
+                        onClick={() => onChangePsd(oldPsd, newPsd, enterPsd)}
+                      >
                         <FontAwesomeIcon icon={faSave} className="me-2" />
                         Change password
                       </Button>
@@ -176,7 +209,12 @@ export default function Profile(props) {
                           <Form.Label className="form-label" htmlFor="email">
                             Email
                           </Form.Label>
-                          <Form.Control id="email" type="text" value={emailI} onChange={(e) => setEmailI(e.target.value)} />
+                          <Form.Control
+                            id="email"
+                            type="text"
+                            value={emailI}
+                            onChange={(e) => setEmailI(e.target.value)}
+                          />
                         </div>
                       </Col>
                     </Row>
@@ -187,12 +225,20 @@ export default function Profile(props) {
                           <Form.Label className="form-label" htmlFor="name">
                             name
                           </Form.Label>
-                          <Form.Control id="name" type="text" value={nameI}  onChange={(e) => setNameI(e.target.value)} />
+                          <Form.Control
+                            id="name"
+                            type="text"
+                            value={nameI}
+                            onChange={(e) => setNameI(e.target.value)}
+                          />
                         </div>
                       </Col>
                     </Row>
                     <div className="text-center mt-4">
-                      <Button variant="outline-dark" onClick={() => onChangeUser(emailI, nameI)}>
+                      <Button
+                        variant="outline-dark"
+                        onClick={() => onChangeUser(emailI, nameI)}
+                      >
                         <FontAwesomeIcon icon={faSave} className="me-2" />
                         Save changes
                       </Button>
@@ -202,7 +248,12 @@ export default function Profile(props) {
               </div>
             </Col>
 
-            <CollectionBar avatar={GetImage(_avatar)} name={_name} email={_email} userid={props.userid}/>
+            <CollectionBar
+              avatar={GetImage(_avatar)}
+              name={_name}
+              email={_email}
+              userid={props.userid}
+            />
           </Row>
         </Container>
       </section>
