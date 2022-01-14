@@ -59,14 +59,55 @@ export default function CustomerLogin() {
     }
   }
 
-  const postRegister = async (src, name, email, password) => {
-    const json = await PostRegister(src, name, email, password)
+  const postRegister = async (src, name, email, password, address) => {
+    const json = await PostRegister(src, name, email, password, address)
     console.log(json)
     router.push(`/collection?uid=${json.userid}`)
   }
 
-  const onRegister = (src, name, email, password) => {
-    postRegister(src, name, email, password)
+
+  const [_name, setName] = useState('');
+  const [_eml, setEml] = useState('');
+  const [_psd, setPsd] = useState('');
+  const [_address, setAddress] = useState('');
+
+  const onRegister = (src, name, email, password, address) => {
+    if (src === '') {
+      return notification.error({
+        message: 'Avatar Is Not Empty',
+        placement: 'bottomRight',
+      })
+    }
+
+    if (name === '') {
+      return notification.error({
+        message: 'Name Not Empty',
+        placement: 'bottomRight',
+      })
+    }
+
+    if (email === '') {
+      return notification.error({
+        message: 'Email Not Empty',
+        placement: 'bottomRight',
+      })
+    }
+
+    if (password === '') {
+      return notification.error({
+        message: 'Password Not Empty',
+        placement: 'bottomRight',
+      })
+    }
+
+    if (address === '') {
+      return notification.error({
+        message: 'Opensea Address Not Empty',
+        placement: 'bottomRight',
+      })
+    }
+
+    postRegister(src, name, email, password, address)
   }
 
   const onGetImage = (e) => {
@@ -113,7 +154,7 @@ export default function CustomerLogin() {
                     <Form.Label htmlFor="password">Password</Form.Label>
                     <Form.Control
                       id="password"
-                      type="password_1"
+                      type="password"
                       value={_password}
                       onChange={(e) => {
                         setPassword(e.target.value)
@@ -173,21 +214,27 @@ export default function CustomerLogin() {
                   </div>
                   <div className="mb-4">
                     <Form.Label htmlFor="name">Name</Form.Label>
-                    <Form.Control id="name" type="text" />
+                    <Form.Control id="name" type="text" value={_name} onChange={(e) => {
+                        setName(e.target.value)
+                      }}/>
                   </div>
                   <div className="mb-4">
                     <Form.Label htmlFor="email">Email</Form.Label>
-                    <Form.Control id="email" type="text" />
+                    <Form.Control id="email" type="text" value={_eml} onChange={(e) => setEml(e.target.value) }/>
                   </div>
                   <div className="mb-4">
                     <Form.Label htmlFor="passwordRegister">Password</Form.Label>
-                    <Form.Control id="passwordRegister" type="password" />
+                    <Form.Control id="passwordRegister" type="password" value={_psd} onChange={(e) => setPsd(e.target.value) } />
+                  </div>
+                  <div className="mb-4">
+                    <Form.Label htmlFor="email">OPENSEA ADDRESS</Form.Label>
+                    <Form.Control id="address" type="text" value={_address} onChange={(e) => setAddress(e.target.value)} />
                   </div>
                   <div className="mb-4">
                     <Button
                       variant="outline-dark"
                       onClick={() =>
-                        onRegister(_imageSrc, "Juice", "123@gmail.com", "111")
+                        onRegister(_imageSrc, _name, _eml, _psd, _address)
                       }
                     >
                       <FontAwesomeIcon icon={faUser} className="me-2" />

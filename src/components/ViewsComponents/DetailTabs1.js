@@ -8,7 +8,7 @@ const DetailTabs1 = ({
   purchase_data = [],
   try_on_data = [],
   roblox_data,
-  description = '',
+  description = "",
   comments = [],
 }) => {
   const groupByN = (n, data) => {
@@ -21,14 +21,14 @@ const DetailTabs1 = ({
 
   useEffect(() => {
     setTimeout(() => {
-      onSelct(1);
+      onSelct(1)
     }, 500)
   })
 
   const onSelct = (type = 1) => {
     var chartDom = document.getElementById("outfit_data")
     var myChart = echarts.init(chartDom)
-    const data1 = roblox_data.outfit_data;
+    const data1 = roblox_data.outfit_data
     const data2 = roblox_data.purchase_data
     const data3 = roblox_data.try_on_data
     var option
@@ -48,6 +48,9 @@ const DetailTabs1 = ({
       ],
     }
     option && myChart.setOption(option)
+    window.onresize = function () {
+      myChart.resize()
+    }
   }
 
   return (
@@ -89,9 +92,7 @@ const DetailTabs1 = ({
           <Tab.Content className="py-4">
             <Tab.Pane eventKey="first" className="px-3">
               <Row>
-                <Col>
-                  {description}
-                </Col>
+                <Col>{description}</Col>
                 {/* {groupedAdditionalInfo.map((infoBlock, index) => (
                   <Col key={index} md="12">
                     <Table className="text-sm">
@@ -121,7 +122,7 @@ const DetailTabs1 = ({
               </Row>
             </Tab.Pane>
             <Tab.Pane eventKey="second">
-              <Col md="12">
+              <Col md="12" style={{ overflowX: "auto" }}>
                 <div style={{ display: "flex", alignItems: "center" }}>
                   <div
                     style={{
@@ -146,7 +147,11 @@ const DetailTabs1 = ({
                     purchase data
                   </div>
                   <div
-                    style={{ cursor: "pointer", padding: "10px 15px", border: "1px solid rgba(52, 148, 230, 0.1)", }}
+                    style={{
+                      cursor: "pointer",
+                      padding: "10px 15px",
+                      border: "1px solid rgba(52, 148, 230, 0.1)",
+                    }}
                     onClick={() => onSelct(3)}
                   >
                     try on data
@@ -154,7 +159,7 @@ const DetailTabs1 = ({
                 </div>
                 <div
                   id="outfit_data"
-                  style={{ width: "100%", height: "300px" }}
+                  style={{ width: "100%", maxWidth: 375, height: "300px" }}
                 ></div>
               </Col>
             </Tab.Pane>

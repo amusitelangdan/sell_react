@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2022-01-12 14:55:07
- * @LastEditTime: 2022-01-13 21:13:31
+ * @LastEditTime: 2022-01-14 16:16:09
  * @LastEditors: Please set LastEditors
  * @Description: api 文档
  * @FilePath: /sell-react-2-0(1)/src/api/api.js
@@ -55,10 +55,16 @@ export const PostLogin = async (email, psd) => {
   }
 }
 
-export const PostRegister = async (src, name, email, password) => {
+export const PostRegister = async (src, name, email, password, address) => {
   const res = await fetch(`${baseURL}/register`, {
     method: "POST",
-    body: JSON.stringify({ avator: src, name: name, email: email, password }),
+    body: JSON.stringify({
+      avator: src,
+      name: name,
+      email: email,
+      password,
+      userid: address,
+    }),
   })
   const json = await res.json()
   return json

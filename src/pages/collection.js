@@ -18,7 +18,7 @@ export async function getServerSideProps(context) {
   const options = {
     page: 1,
     size: 20,
-    type: "collection",
+    type: "favorite",
   }
   if (context.query.uid) {
     options.userid = context.query.uid
@@ -30,7 +30,7 @@ export async function getServerSideProps(context) {
         page: json.page,
         size: json.size,
         total: json.total,
-        type: "collection",
+        type: "favorite",
         userid: options.userid,
         userInfo: json2,
       },
@@ -42,7 +42,7 @@ export async function getServerSideProps(context) {
         page: 1,
         size: 20,
         total: 20,
-        type: "collection",
+        type: "favorite",
         userid: '',
       },
     }
@@ -112,17 +112,17 @@ export default function Collection(props) {
       case 0:
         setType("collection")
         setPage(1);
-        getNefts(1, v)
+        getNefts(1, "collection")
         break
       case 1:
         setType("created")
         setPage(1);
-        getNefts(1, v)
+        getNefts(1, "created")
         break
       case 2:
         setType("favorited")
         setPage(1);
-        getNefts(1, v)
+        getNefts(1, "favorited")
         break
       default:
         break

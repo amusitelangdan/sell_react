@@ -142,7 +142,7 @@ export default function Home(props) {
             <Col xs="12" className="products-grid sidebar-none">
               <Row>
                 {_nefts.map((item, index) => (
-                  <Col sm="6" xl="3" md="3" lg="3" key={index}>
+                  <Col sm="6" xl="3" md="6" lg="4" key={index}>
                     <CardComponent
                       onClick={(v) => {
                         router.push(`/detail?id=${v.id}`)
