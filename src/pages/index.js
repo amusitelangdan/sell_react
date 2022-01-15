@@ -63,7 +63,7 @@ export default function Home(props) {
         item.rowclass = "align-items-center h-100 text-white text-center"
         item.itemclass = "home-full-item"
         item.contentclass = "mx-auto"
-        item.link = "/category"
+        item.link = "/collection"
         _image_list.push(item)
       })
       setSwiper(_image_list)
