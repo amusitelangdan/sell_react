@@ -9,8 +9,8 @@ import data from "../data/customer-login.json"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSignInAlt } from "@fortawesome/free-solid-svg-icons"
 import { faUser } from "@fortawesome/free-regular-svg-icons"
-import { useState } from "react"
-import { PostLogin, PostRegister } from "../api/api"
+import { useEffect, useState } from "react"
+import { PostLogin, PostRegister, GetLocal, SetLocal } from "../api/api"
 import { useRouter } from "next/router"
 import { notification } from "antd"
 
@@ -34,33 +34,59 @@ export default function CustomerLogin() {
     postLogin(email, psd)
   }
 
+  useEffect(() => {
+    localStorage.removeItem('user')
+  }, [])
+
   const postLogin = async (email, psd) => {
-    if (email === '') {
+    if (email === "") {
       return notification.error({
-        message: 'Email not Empty',
-        placement: 'bottomRight',
+        message: "Email not Empty",
+        placement: "bottomRight",
       })
     }
 
-    if (psd === '') {
+    if (psd === "") {
       return notification.error({
-        message: 'Password Not Empty',
-        placement: 'bottomRight',
+        message: "Password Not Empty",
+        placement: "bottomRight",
       })
     }
+
     const json = await PostLogin(email, psd)
-    if (json.msg) {
-      notification.error({
-        message: json.msg,
-        placement: 'bottomRight',
+
+    if (json.code === "404") {
+      return notification.error({
+        message: json.data.msg,
+        placement: "bottomRight",
       })
-    } else if (json.userid) {
-      router.push(`/collection?uid=${json.userid}`)
-    } else {
+    }
+
+    if (json.code === "100") {
       notification.error({
-        message: ' Password or Email Error',
-        placement: 'bottomRight',
+        message: json.data.msg,
+        placement: "bottomRight",
       })
+      return router.replace("/customer-login")
+    }
+
+    if (json.code === "200") {
+      console.log(json);
+      const _json = json.data;
+      if (_json.msg) {
+        return notification.error({
+          message: json.msg,
+          placement: "bottomRight",
+        })
+      } else if (_json.userid) {
+        SetLocal('user', _json.userid);
+        return router.replace(`/collection?uid=${json.userid}`)
+      } else {
+        return notification.error({
+          message: " Password or Email Error",
+          placement: "bottomRight",
+        })
+      }
     }
   }
 
@@ -70,45 +96,44 @@ export default function CustomerLogin() {
     router.push(`/collection?uid=${json.userid}`)
   }
 
-
-  const [_name, setName] = useState('');
-  const [_eml, setEml] = useState('');
-  const [_psd, setPsd] = useState('');
-  const [_address, setAddress] = useState('');
+  const [_name, setName] = useState("")
+  const [_eml, setEml] = useState("")
+  const [_psd, setPsd] = useState("")
+  const [_address, setAddress] = useState("")
 
   const onRegister = (src, name, email, password, address) => {
-    if (src === '') {
+    if (src === "") {
       return notification.error({
-        message: 'Avatar Is Not Empty',
-        placement: 'bottomRight',
+        message: "Avatar Is Not Empty",
+        placement: "bottomRight",
       })
     }
 
-    if (name === '') {
+    if (name === "") {
       return notification.error({
-        message: 'Name Not Empty',
-        placement: 'bottomRight',
+        message: "Name Not Empty",
+        placement: "bottomRight",
       })
     }
 
-    if (email === '') {
+    if (email === "") {
       return notification.error({
-        message: 'Email Not Empty',
-        placement: 'bottomRight',
+        message: "Email Not Empty",
+        placement: "bottomRight",
       })
     }
 
-    if (password === '') {
+    if (password === "") {
       return notification.error({
-        message: 'Password Not Empty',
-        placement: 'bottomRight',
+        message: "Password Not Empty",
+        placement: "bottomRight",
       })
     }
 
-    if (address === '') {
+    if (address === "") {
       return notification.error({
-        message: 'Opensea Address Not Empty',
-        placement: 'bottomRight',
+        message: "Opensea Address Not Empty",
+        placement: "bottomRight",
       })
     }
 
@@ -219,21 +244,41 @@ export default function CustomerLogin() {
                   </div>
                   <div className="mb-4">
                     <Form.Label htmlFor="name">Name</Form.Label>
-                    <Form.Control id="name" type="text" value={_name} onChange={(e) => {
+                    <Form.Control
+                      id="name"
+                      type="text"
+                      value={_name}
+                      onChange={(e) => {
                         setName(e.target.value)
-                      }}/>
+                      }}
+                    />
                   </div>
                   <div className="mb-4">
                     <Form.Label htmlFor="email">Email</Form.Label>
-                    <Form.Control id="email" type="text" value={_eml} onChange={(e) => setEml(e.target.value) }/>
+                    <Form.Control
+                      id="email"
+                      type="text"
+                      value={_eml}
+                      onChange={(e) => setEml(e.target.value)}
+                    />
                   </div>
                   <div className="mb-4">
                     <Form.Label htmlFor="passwordRegister">Password</Form.Label>
-                    <Form.Control id="passwordRegister" type="password" value={_psd} onChange={(e) => setPsd(e.target.value) } />
+                    <Form.Control
+                      id="passwordRegister"
+                      type="password"
+                      value={_psd}
+                      onChange={(e) => setPsd(e.target.value)}
+                    />
                   </div>
                   <div className="mb-4">
                     <Form.Label htmlFor="email">OPENSEA ADDRESS</Form.Label>
-                    <Form.Control id="address" type="text" value={_address} onChange={(e) => setAddress(e.target.value)} />
+                    <Form.Control
+                      id="address"
+                      type="text"
+                      value={_address}
+                      onChange={(e) => setAddress(e.target.value)}
+                    />
                   </div>
                   <div className="mb-4">
                     <Button

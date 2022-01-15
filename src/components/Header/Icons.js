@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-11-08 10:14:40
- * @LastEditTime: 2022-01-14 19:32:40
+ * @LastEditTime: 2022-01-15 17:33:59
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /sell-react-2-0(1)/src/components/Header/Icons.js
@@ -13,7 +13,7 @@ import Link from "next/link"
 import CartOverviewDropdown from "../CartOverviewDropdown"
 import Icon from "../Icon"
 import userMenu from "../../data/user-menu.json"
-import {useRouter} from "next/router"
+import { useRouter } from "next/router"
 export default function Icons({
   loggedUser,
   loggedUser_avatar,
@@ -21,7 +21,7 @@ export default function Icons({
   setSearchToggle,
   data,
 }) {
-  const router = useRouter();
+  const router = useRouter()
 
   return (
     <div className="d-flex align-items-center justify-content-between justify-content-lg-end mt-1 mb-2 my-lg-0">
@@ -82,14 +82,39 @@ export default function Icons({
         <Dropdown as="div" className="navbar-icon-link mt-n1 py-0">
           <Dropdown.Toggle as="a" className="dropdown-toggle--no-chevron">
             <img
-              src={loggedUser_avatar ? loggedUser_avatar : '/img/slider/circle-slider-2.jpg'}
+              src={
+                loggedUser_avatar
+                  ? loggedUser_avatar
+                  : "/img/slider/circle-slider-2.jpg"
+              }
               // src={"/img/slider/circle-slider-2.jpg"}
               // alt={data.title}
               className="avatar avatar-sm avatar-border-white"
             />
           </Dropdown.Toggle>
           <Dropdown.Menu align="end">
-            <Dropdown.Item onClick={() => router.replace('/customer-login')}>Sign Out</Dropdown.Item>
+          <Dropdown.Item
+              onClick={() => {
+                router.push("/profile")
+              }}
+            >
+              Profile
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => {
+                router.push("/collection")
+              }}
+            >
+              Collection
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => {
+                localStorage.removeItem("user")
+                router.replace("/customer-login")
+              }}
+            >
+              Sign Out
+            </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
       ) : (

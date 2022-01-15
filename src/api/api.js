@@ -1,14 +1,26 @@
 /*
  * @Author: your name
  * @Date: 2022-01-12 14:55:07
- * @LastEditTime: 2022-01-14 19:21:38
+ * @LastEditTime: 2022-01-15 16:00:35
  * @LastEditors: Please set LastEditors
  * @Description: api 文档
  * @FilePath: /sell-react-2-0(1)/src/api/api.js
  */
 import fetch from "isomorphic-unfetch"
 import React from "react"
-import { message } from "antd"
+import { notification } from 'antd'
+
+
+import localStorage from 'localStorage'
+
+export const GetLocal = (k) => {
+  return localStorage.getItem(k)
+}
+
+export const SetLocal = (k,v) => {
+  localStorage.setItem(k,v)
+}
+
 
 const baseURL = "http://45.63.15.204:8001"
 
@@ -48,11 +60,14 @@ export const PostLogin = async (email, psd) => {
     method: "POST",
     body: JSON.stringify({ email: email, password: psd }),
   })
-  console.log(res)
   if (res.status === 200) {
     const json = await res.json()
-    sessionStorage.setItem("user", JSON.stringify(json))
     return json
+  } else {
+    return notification.error({
+      message: 'Service Error',
+      placement: "bottomRight",
+    })
   }
 }
 

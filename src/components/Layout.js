@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-11-08 10:14:40
- * @LastEditTime: 2022-01-14 19:31:14
+ * @LastEditTime: 2022-01-15 16:49:33
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /sell-react-2-0(1)/src/components/Layout.js
@@ -28,7 +28,7 @@ const Layout = (pageProps) => {
       sticky: pageProps.nav && pageProps.nav.sticky,
     },
     loggedUser: pageProps.loggedUser,
-    loggedUser_avatar: pageProps.loggedUser_avatar,
+    loggedUser_avatar: pageProps.userAvatar,
     headerClasses: pageProps.headerClasses,
     headerAbsolute: pageProps.headerAbsolute,
     hideTopbar: pageProps.hideTopbar,

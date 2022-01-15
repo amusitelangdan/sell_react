@@ -1,13 +1,12 @@
 import { Container, Row, Col } from "react-bootstrap"
 import ShopPagination from "../components/ShopPagination"
-import { getBanner, getNfts } from "./../api/api"
+import { getBanner, getNfts, parseCookies } from "./../api/api"
 import CardLookbook from "../components/CardLookbook"
 import CardComponent from "./../components/Card"
 import Swiper from "../components/Swiper"
 // import { fetch } from 'fetch'
 import data from "../data/index.json"
 import { useEffect, useState } from "react"
-import fetch from "isomorphic-unfetch"
 import { useRouter } from "next/router"
 
 export async function getServerSideProps(context) {
@@ -19,7 +18,6 @@ export async function getServerSideProps(context) {
     options.page = 1
   }
   const json2 = await getNfts(options.page)
-  console.log(json2);
   return {
     props: {
       nav: {

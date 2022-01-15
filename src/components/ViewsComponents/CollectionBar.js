@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2022-01-10 14:24:37
- * @LastEditTime: 2022-01-13 21:51:59
+ * @LastEditTime: 2022-01-15 17:21:43
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /sell-react-2-0(1)/src/components/ViewsComponents/CollectionBar.js
@@ -62,29 +62,6 @@ const CollectionBar = (props) => {
       </div>
     </Col>
   )
-  //   return (
-  //     <Col lg={{ size: 4, order: 1 }} xl="3" className="sidebar collectionBar">
-  //       <div className="my-info">
-  //         <img className="my-avator" />
-  //         <h6 className="text-capitalize">julie lescaut</h6>
-  //         <p className="desc">2553023383@qq.com</p>
-  //       </div>
-  //       <div className="my-btn">
-  //         <div className="my-btn-item">
-  //           <Icon icon="male-user-1" className="my-user-icon" />
-  //           <div className="my-user-text">My Zone</div>
-  //         </div>
-  //         <div className="my-btn-item">
-  //           <Icon icon="male-user-1" className="my-user-icon" />
-  //           <div className="my-user-text">My Collection</div>
-  //         </div>
-  //         <div className="my-btn-item">
-  //           <Icon icon="exit-1" className="my-user-icon" />
-  //           <div className="my-user-text">Log Out</div>
-  //         </div>
-  //       </div>
-  //     </Col>
-  //   )
 }
 
 export default CollectionBar

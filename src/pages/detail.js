@@ -119,19 +119,6 @@ export default function MyDetail(props) {
                           />
                         </div>
                       </SwiperSlide>
-                    {/* {productData.img.detail.map((image, index) => (
-                      <SwiperSlide key={index}>
-                        <div className="detail-full-item bg-cover">
-                          <Image
-                            src={image.img}
-                            alt="..."
-                            layout="fill"
-                            className="bg-image"
-                            priority
-                          />
-                        </div>
-                      </SwiperSlide>
-                    ))} */}
                   </Swiper>
                 </Col>
                 <Col
@@ -142,10 +129,6 @@ export default function MyDetail(props) {
                   style={{ marginTop: 18 }}
                 >
                   <div>
-                    {/* <Breadcrumbs
-                      links={productData.breadcrumbs}
-                      className="justify-content-start"
-                    /> */}
                     <div className="detail_author_info">
                       <img className="author_avator" src={_authorSrc} />
                       <h5 className="text-uppercase">{_author}</h5>
@@ -160,7 +143,6 @@ export default function MyDetail(props) {
                         make_an_offer: props.info?.make_an_offer,
                       }}
                     />
-                    {/* <DetailMain product={productData} /> */}
                   </div>
                 </Col>
               </Row>

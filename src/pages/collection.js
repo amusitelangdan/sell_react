@@ -11,68 +11,49 @@ import products from "../data/products.json"
 import data from "../data/collection.json"
 import ShopPagination from "../components/ShopPagination"
 import { useEffect, useState } from "react"
-import { getCollection, GetImage, GetUserInfo } from '../api/api'
-import { useRouter } from 'next/router';
-
-export async function getServerSideProps(context) {
-  const options = {
-    page: 1,
-    size: 20,
-    type: "favorite",
-  }
-  if (context.query.uid) {
-    options.userid = context.query.uid
-    const json = await getCollection(options.type, options.page, options.size, options.userid);
-    const json2 = await GetUserInfo(options.userid);
-    return {
-      props: {
-        list: json.list,
-        page: json.page,
-        size: json.size,
-        total: json.total,
-        type: "favorite",
-        userid: options.userid,
-        userInfo: json2,
-        loggedUser: true,
-        loggedUser_avatar: GetImage(json2.avatar)
-      },
-    }
-  } else {
-    return {
-      props: {
-        list: [],
-        page: 1,
-        size: 20,
-        total: 20,
-        type: "favorite",
-        userid: '',
-      },
-    }
-  }
-}
+import { getCollection, GetImage, GetUserInfo, GetLocal } from "../api/api"
+import { useRouter } from "next/router"
+import { notification } from "antd"
 
 export default function Collection(props) {
-  const [_nefts, setNefts] = useState(props.list)
-  const [_total, setTotal] = useState(props.total)
-  const [_page, setPage] = useState(props.page)
-  const [_size, setSize] = useState(props.size)
-  const [_type, setType] = useState(props.type)
-  const [_userid, setUserid] = useState(props.userid)
-  const router = useRouter();
+  const [_nefts, setNefts] = useState([])
+  const [_total, setTotal] = useState(0)
+  const [_page, setPage] = useState(1)
+  const [_size, setSize] = useState(20)
+  const [_type, setType] = useState("favorite")
+  const [_userid, setUserid] = useState("")
+  const [_userInfo, setUserInfo] = useState({})
+  const router = useRouter()
+
   useEffect(() => {
-    console.log(props);
-    if (props.list) {
-      setNefts(props.list)
+    if (GetLocal("user")) {
+      const userid = GetLocal("user")
+      getMyUser(userid)
+    } else {
+      router.replace('/customer-login')
     }
-    setTotal(props.total)
-    setPage(props.page)
-    setSize(props.size)
-    setType(props.type)
-    setUserid(props.userid)
-  }, [props])
+  }, [])
+
+  const getMyUser = async (id) => {
+    const res = await GetUserInfo(id)
+    if (res.code === "100") {
+      localStorage.removeItem("user")
+      return router.replace("/customer-login")
+    }
+
+    if (res.code === "404") {
+      return notification.error({
+        message: res.data.msg,
+        placement: "bottomRight",
+      })
+    }
+    setUserInfo(res.data)
+    setUserid(id)
+    getNefts(_page, _type)
+  }
 
   const getNefts = async (v, tp) => {
-    const json = await getCollection(tp, v, _size, _userid);
+    const json = await getCollection(tp, v, _size, _userid)
     console.log(json, "res")
     if (json.list) {
       setNefts(json.list)
@@ -97,15 +78,11 @@ export default function Collection(props) {
   const onPrev = (v, tp) => {
     if (v > 0) {
       getNefts(v, tp)
-      // setPage(v)
-      // router.push({ path: "/", query: { page: v } })
     }
   }
   const onNext = (v, tp) => {
     if (v < Math.ceil(_total / _size)) {
       getNefts(v, tp)
-      // setPage(v)
-      // router.push({ path: "/", query: { page: v } })
     }
   }
 
@@ -113,17 +90,17 @@ export default function Collection(props) {
     switch (v) {
       case 0:
         setType("collection")
-        setPage(1);
+        setPage(1)
         getNefts(1, "collection")
         break
       case 1:
         setType("created")
-        setPage(1);
+        setPage(1)
         getNefts(1, "created")
         break
       case 2:
         setType("favorited")
-        setPage(1);
+        setPage(1)
         getNefts(1, "favorited")
         break
       default:
@@ -141,28 +118,38 @@ export default function Collection(props) {
       <Container>
         <Row>
           <Col xl="9" lg="8" className="products-grid">
-            {/* <ShopHeader /> */}
-            <MyTab activeStep={_type === 'collection' ? 0 : _type === 'created' ? 1 : 2} onClick={(v) => onSelectTab(v)} />
+            <MyTab
+              activeStep={
+                _type === "collection" ? 0 : _type === "created" ? 1 : 2
+              }
+              onClick={(v) => onSelectTab(v)}
+            />
             <Row>
-              {_nefts.map((item, index) => (
-                <Col key={index} sm="6" xl="4">
-                  <CardComponent
-                  onClick={(v) => {router.push(`/detail?id=${v.id}`)}}
-                    data={{
-                      image: `http://45.63.15.204:8001/${item.imgSrc}`,
-                      title: item.meta_title,
-                      link: "/",
-                      price: item.price,
-                      name: item.meta_title,
-                      star: item.star,
-                      last_price: item.last_price,
-                      author_src: `http://45.63.15.204:8001/${item.author_src}`,
-                      author: item.author,
-                      id: item.id
-                    }}
-                  />
-                </Col>
-              ))}
+              {_nefts.length > 0 ? (
+                _nefts.map((item, index) => (
+                  <Col key={index} sm="6" xl="4">
+                    <CardComponent
+                      onClick={(v) => {
+                        router.push(`/detail?id=${v.id}`)
+                      }}
+                      data={{
+                        image: `http://45.63.15.204:8001/${item.imgSrc}`,
+                        title: item.meta_title,
+                        link: "/",
+                        price: item.price,
+                        name: item.meta_title,
+                        star: item.star,
+                        last_price: item.last_price,
+                        author_src: `http://45.63.15.204:8001/${item.author_src}`,
+                        author: item.author,
+                        id: item.id,
+                      }}
+                    />
+                  </Col>
+                ))
+              ) : (
+                <></>
+              )}
             </Row>
 
             <ShopPagination
@@ -174,7 +161,16 @@ export default function Collection(props) {
               onNext={(v) => onNext(v, _type)}
             />
           </Col>
-          <CollectionBar name={props.userInfo.name} email={props.userInfo.email} avatar={GetImage(props.userInfo.avatar)} userid={props.userid}/>
+          {JSON.stringify(_userInfo) !== "{}" ? (
+            <CollectionBar
+              name={_userInfo.name}
+              email={_userInfo.email}
+              avatar={GetImage(_userInfo.avatar)}
+              userid={_userid}
+            />
+          ) : (
+            <></>
+          )}
         </Row>
       </Container>
     </>
