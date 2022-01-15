@@ -92,8 +92,30 @@ export default function CustomerLogin() {
 
   const postRegister = async (src, name, email, password, address) => {
     const json = await PostRegister(src, name, email, password, address)
-    console.log(json)
-    router.push(`/collection?uid=${json.userid}`)
+    if (json.code === "404") {
+      return notification.error({
+        message: json.data ? json.data.msg ? json.data.msg: 'ERROR' : 'ERROR',
+        placement: "bottomRight",
+      })
+    }
+
+    if (json.code === "200") {
+      const _json = json.data;
+      if (_json.msg) {
+        return notification.success({
+          message: json.msg,
+          placement: "bottomRight",
+        })
+      } else if (_json.userid) {
+        return alert('Please activate email');
+      } else {
+        return notification.error({
+          message: " Password or Email Error",
+          placement: "bottomRight",
+        })
+      }
+    }
+    // router.push(`/collection?uid=${json.userid}`)
   }
 
   const [_name, setName] = useState("")
