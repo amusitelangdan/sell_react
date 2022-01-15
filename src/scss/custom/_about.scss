@@ -423,3 +423,27 @@
         margin-top: 8px;
     }
 }
+
+.on-default-xs {
+    transition: all 0.5s;
+}
+
+.on-default-xs:hover {
+    cursor: pointer;
+    background-color: #343a40;
+    color: #fff;
+}
+
+.on-default-xs-selected {
+    color: #fff;
+    background-color: #343a40;
+}
+
+.accatrrr {
+    .accaaaaa {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 20px;
+    }
+}

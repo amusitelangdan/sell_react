@@ -20,9 +20,12 @@ export default function Collection(props) {
   const [_total, setTotal] = useState(0)
   const [_page, setPage] = useState(1)
   const [_size, setSize] = useState(20)
-  const [_type, setType] = useState("favorite")
+  const [_type, setType] = useState("favorited")
   const [_userid, setUserid] = useState("")
   const [_userInfo, setUserInfo] = useState({})
+  const [_fa, setFa] = useState(0)
+  const [_cr, setCr] = useState(0)
+  const [_co, setCo] = useState(0)
   const router = useRouter()
 
   useEffect(() => {
@@ -30,7 +33,7 @@ export default function Collection(props) {
       const userid = GetLocal("user")
       getMyUser(userid)
     } else {
-      router.replace('/customer-login')
+      router.replace("/customer-login")
     }
   }, [])
 
@@ -49,59 +52,86 @@ export default function Collection(props) {
     }
     setUserInfo(res.data)
     setUserid(id)
-    getNefts(_page, _type)
+    getNefts(_page, _type, id)
   }
 
-  const getNefts = async (v, tp) => {
-    const json = await getCollection(tp, v, _size, _userid)
+  const getNefts = async (v, tp, u) => {
+    const json = await getCollection(tp, v, _size, u)
     console.log(json, "res")
-    if (json.list) {
-      setNefts(json.list)
-    }
+    let favList = []
+    let createdList = []
+    let collectionList = []
+    let favTotal = []
+    let createdTotal = []
+    let collectionTotal = []
+    let favPage = []
+    let createdPage = []
+    let collectionPage = []
+    if (json.data) {
+      favList = json.data.favorited.list
+      favTotal = json.data.favorited.total
+      favPage = json.data.favorited.page ? json.data.favorited.page : 1
 
-    if (json.page) {
-      setPage(json.page)
-    }
+      createdList = json.data.created.list
+      createdTotal = json.data.created.total
+      createdPage = json.data.created.page ? json.data.created.page : 1
 
-    if (json.size) {
-      setSize(json.size)
-    }
+      collectionList = json.data.collection.list
+      collectionTotal = json.data.collection.total
+      collectionPage = json.data.collection.page ? json.data.collection.page : 1
+      setFa(favTotal)
+      setCr(createdTotal)
+      setCo(collectionTotal)
+      if (tp === "favorited") {
+        setNefts(favList)
+        setPage(favPage)
+        setTotal(favTotal)
+      }
 
-    if (json.total) {
-      setTotal(json.total)
+      if (tp === "created") {
+        setNefts(createdList)
+        setTotal(createdTotal)
+        setPage(createdPage)
+      }
+
+      if (tp === "collection") {
+        setNefts(collectionList)
+        setTotal(collectionTotal)
+        setPage(collectionPage)
+      }
     }
   }
 
-  const onPage = (v, tp) => {
-    getNefts(v, tp)
+  const onPage = (v, tp, u) => {
+    getNefts(v, tp, u)
   }
-  const onPrev = (v, tp) => {
+  const onPrev = (v, tp, u) => {
     if (v > 0) {
-      getNefts(v, tp)
+      getNefts(v, tp, u)
     }
   }
-  const onNext = (v, tp) => {
+  const onNext = (v, tp, u) => {
     if (v < Math.ceil(_total / _size)) {
-      getNefts(v, tp)
+      getNefts(v, tp, u)
     }
   }
 
-  const onSelectTab = (v) => {
+  const onSelectTab = (v, u) => {
     switch (v) {
       case 0:
         setType("collection")
         setPage(1)
-        getNefts(1, "collection")
-        break
-      case 1:
-        setType("created")
-        setPage(1)
-        getNefts(1, "created")
+        getNefts(1, "collection", u)
         break
       case 2:
+        setType("created")
+        setPage(1)
+        getNefts(1, "created", u)
+        break
+      case 1:
         setType("favorited")
         setPage(1)
-        getNefts(1, "favorited")
+        getNefts(1, "favorited", u)
         break
       default:
         break
@@ -120,9 +150,12 @@ export default function Collection(props) {
           <Col xl="9" lg="8" className="products-grid">
             <MyTab
               activeStep={
-                _type === "collection" ? 0 : _type === "created" ? 1 : 2
+                _type === "collection" ? 0 : _type === "created" ? 2 : 1
               }
-              onClick={(v) => onSelectTab(v)}
+              cr={_cr}
+              co={_co}
+              fa={_fa}
+              onClick={(v) => onSelectTab(v, _userid)}
             />
             <Row>
               {_nefts.length > 0 ? (
@@ -152,14 +185,18 @@ export default function Collection(props) {
               )}
             </Row>
 
-            <ShopPagination
-              page={_page}
-              size={_size}
-              total={_total}
-              onPage={(v) => onPage(v, _type)}
-              onPrev={(v) => onPrev(v, _type)}
-              onNext={(v) => onNext(v, _type)}
-            />
+            {_total ? (
+              <ShopPagination
+                page={_page}
+                size={_size}
+                total={_total}
+                onPage={(v) => onPage(v, _type, _userid)}
+                onPrev={(v) => onPrev(v, _type, _userid)}
+                onNext={(v) => onNext(v, _type, _userid)}
+              />
+            ) : (
+              <></>
+            )}
           </Col>
           {JSON.stringify(_userInfo) !== "{}" ? (
             <CollectionBar

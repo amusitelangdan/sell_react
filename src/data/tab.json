@@ -7,14 +7,14 @@
   },
   {
     "id": 1,
-    "name": "Created",
-    "prevTitle": "Created",
+    "name": "Favoriteo",
+    "prevTitle": "Back to the Delivery Method",
     "nav": true
   },
   {
     "id": 2,
-    "name": "Favoriteo",
-    "prevTitle": "Back to the Delivery Method",
+    "name": "Created",
+    "prevTitle": "Created",
     "nav": true
   }
 ]

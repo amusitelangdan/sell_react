@@ -7,7 +7,7 @@ const DetailInfo = ({ data }) => {
       <div className="d-flex flex-column flex-sm-row align-items-sm-center justify-content-sm-between mb-4">
         <div className="d-flex detail-item-1">
           <img src={"/img/dengpao.png"} className="eye-icon" />
-          <div className="text-uppercase">by stoic</div>
+          <div className="text-uppercase">by {data.author ? data.author : 'buy'}</div>
         </div>
         <div className="d-flex detail-item-1">
           <img src={"/img/eye.png"} className="eye-icon" />

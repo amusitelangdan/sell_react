@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2022-01-15 18:30:52
- * @LastEditTime: 2022-01-15 19:05:52
+ * @LastEditTime: 2022-01-15 20:52:35
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /sell-react-2-0(1)/src/pages/activation.js
@@ -37,6 +37,10 @@ const Activation = (props) => {
   const postActivate = async (token) => {
     const res = await PostActivite(token)
     if (res.code === "200") {
+      notification.error({
+        message: 'OK',
+        placement: "bottomRight",
+      })
       SetLocal("user", res.data.userid)
       router.replace("/profile")
     }

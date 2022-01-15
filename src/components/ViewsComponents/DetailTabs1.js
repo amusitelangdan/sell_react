@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react"
+import React, { memo, useEffect, useState } from "react"
 import { Container, Nav, Tab, Row, Col, Table } from "react-bootstrap"
 import * as echarts from "echarts"
 
-const DetailTabs1 = ({
+const DetailTabs1 = memo(({
   product,
   outfit_data = [],
   purchase_data = [],
@@ -16,23 +16,41 @@ const DetailTabs1 = ({
     for (let i = 0; i < data.length; i += n) result.push(data.slice(i, i + n))
     return result
   }
+  const [axa, setAxa] = useState(1)
 
   const groupedAdditionalInfo = groupByN(4, product.additionalinfo)
 
   useEffect(() => {
     setTimeout(() => {
       onSelct(1)
+      console.log(1)
     }, 500)
-  })
+  }, [])
 
   const onSelct = (type = 1) => {
-    var chartDom = document.getElementById("outfit_data")
-    var myChart = echarts.init(chartDom)
+    setAxa(type)
     const data1 = roblox_data.outfit_data
     const data2 = roblox_data.purchase_data
     const data3 = roblox_data.try_on_data
-    var option
-    option = {
+    switch (type) {
+      case 1:
+        initEcharts(data1)
+        break
+      case 2:
+        initEcharts(data2)
+        break
+      case 3:
+        initEcharts(data3)
+        break
+      default:
+        break
+    }
+  }
+
+  const initEcharts = (data) => {
+    var chartDom = document.getElementById("outfit_data")
+    let myChart = echarts.init(chartDom)
+    const option = {
       xAxis: {
         type: "category",
         data: [],
@@ -42,7 +60,7 @@ const DetailTabs1 = ({
       },
       series: [
         {
-          data: type === 1 ? data1 : type === 2 ? data2 : data3,
+          data: data,
           type: "line",
         },
       ],
@@ -125,6 +143,9 @@ const DetailTabs1 = ({
               <Col md="12" style={{ overflowX: "auto" }}>
                 <div style={{ display: "flex", alignItems: "center" }}>
                   <div
+                    className={`on-default-xs ${
+                      axa === 1 ? "on-default-xs-selected" : ""
+                    }`}
                     style={{
                       marginRight: 10,
                       cursor: "pointer",
@@ -136,6 +157,9 @@ const DetailTabs1 = ({
                     outfit data
                   </div>
                   <div
+                    className={`on-default-xs ${
+                      axa === 2 ? "on-default-xs-selected" : ""
+                    }`}
                     style={{
                       marginRight: 10,
                       cursor: "pointer",
@@ -147,6 +171,9 @@ const DetailTabs1 = ({
                     purchase data
                   </div>
                   <div
+                    className={`on-default-xs ${
+                      axa === 3 ? "on-default-xs-selected" : ""
+                    }`}
                     style={{
                       cursor: "pointer",
                       padding: "10px 15px",
@@ -178,6 +205,6 @@ const DetailTabs1 = ({
       </Container>
     </section>
   )
-}
+})
 
 export default DetailTabs1

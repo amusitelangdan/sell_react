@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2022-01-12 14:55:07
- * @LastEditTime: 2022-01-15 18:37:04
+ * @LastEditTime: 2022-01-15 20:42:37
  * @LastEditors: Please set LastEditors
  * @Description: api 文档
  * @FilePath: /sell-react-2-0(1)/src/api/api.js
@@ -41,7 +41,7 @@ export const getCollection = async (
   userid = ""
 ) => {
   const res = await fetch(
-    `${baseURL}/api/nfts?type=${type}&page=${page}&size=${size}&userid=${userid}`
+    `${baseURL}/api/collection?type=${type}&page=${page}&size=${size}&userid=${userid}`
   )
   if (res.status === 200) {
     const json = await res.json()

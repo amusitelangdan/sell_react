@@ -13,7 +13,7 @@ import DetailInfo from "./../components/ViewsComponents/DetailInfo"
 import DetailTabs1 from "./../components/ViewsComponents/DetailTabs1"
 import DetailTabs2 from "./../components/ViewsComponents/DetailTabs2"
 import DetailTabs3 from "./../components/ViewsComponents/DetailTabs3"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 export async function getServerSideProps(context) {
   let info = {}
   if (context.query.id) {
@@ -87,6 +87,9 @@ export default function MyDetail(props) {
   // console.log(props)
   const [_author, setAuthor] = useState(props.info?.author)
   const [_authorSrc, setAuthorSrc] = useState(props.info?.author_src)
+  useEffect(() => {
+    console.log(props)
+  }, [])
   return (
     <>
       <section className="product-details">
@@ -107,6 +110,7 @@ export default function MyDetail(props) {
                       clickable: true,
                       dynamicBullets: true,
                     }}
+                    style={{width: '60%', margin: '0 auto'}}
                   >
                     <SwiperSlide>
                         <div className="detail-full-item bg-cover">
@@ -141,6 +145,7 @@ export default function MyDetail(props) {
                         star: props.info?.star,
                         views: props.info?.views,
                         make_an_offer: props.info?.make_an_offer,
+                        author: _author
                       }}
                     />
                   </div>
