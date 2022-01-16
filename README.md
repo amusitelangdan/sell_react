@@ -489,3 +489,107 @@ return
 	}	
 }
 ```
+
+
+
+
+#  API用途
+
+## api文件
+
+```
+src/api/api.js
+```
+
+具体传参参考顶部API文档
+
+## 首页
+
+### 获取banner接口
+```
+/api/banner
+```
+
+### 获取nfts接口
+```
+/api/nfts
+```
+
+### 添加favorited
+
+```
+/api/favorited
+```
+
+### 注释
+
+> getServerSideProps获取banner，因为nfts在登录之后会传递userid，因此在代码的**useEffect**中进行接口请求
+
+## COLLECTION 页面
+
+### 获取用户信息接口
+
+```
+/api/get_user
+```
+
+### 获取collection
+
+```
+/api/collection
+```
+
+> 本地存储了user的userid 也就是后端tokenid，当过期返回100，重定向到login页面
+
+## DETAIL 页面
+
+```
+/api/shop_detail
+```
+
+获取详情信息
+
+## LOGIN 页面
+
+### 登录
+
+```
+/login
+```
+
+### 注册
+
+```
+/register
+```
+
+## PROFILE 页面
+
+### 更新密码和邮箱等
+```
+/api/edit_password
+```
+```
+/api/edit_user
+```
+
+## NFTS 页面
+
+
+### 获取nfts接口
+```
+/api/nfts
+```
+
+## ACTIVIATION 页面
+
+### 邮箱激活接口
+
+```
+/api/activate_user
+```
+
+
+# 修改方式
+
+通过`src/api/api.js`文件中的文件名，可以快速定位到页面中使用的地方，后期增加字段要同步在页面和`src/api/api.js`中同步增加

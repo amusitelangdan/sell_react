@@ -141,21 +141,23 @@ export default function MyDetail(props) {
                   style={{ marginTop: 18 }}
                 >
                   <div className="xixixixixixixi">
-                    <div className="detail_author_info">
-                      <img className="author_avator" src={_authorSrc} />
-                      <h5 className="text-capitalize qwerzxc">{_author}</h5>
+                    <div className="ksksksksksksk">
+                      <div className="detail_author_info">
+                        <img className="author_avator" src={_authorSrc} />
+                        <h5 className="text-capitalize qwerzxc">{_author}</h5>
+                      </div>
+                      <DetailInfo
+                        data={{
+                          nfts_price: props.info?.nfts_price,
+                          price: props.info?.price,
+                          shop_title: props.info?.shop_title,
+                          star: props.info?.star,
+                          views: props.info?.views,
+                          make_an_offer: props.info?.make_an_offer,
+                          author: _author,
+                        }}
+                      />
                     </div>
-                    <DetailInfo
-                      data={{
-                        nfts_price: props.info?.nfts_price,
-                        price: props.info?.price,
-                        shop_title: props.info?.shop_title,
-                        star: props.info?.star,
-                        views: props.info?.views,
-                        make_an_offer: props.info?.make_an_offer,
-                        author: _author,
-                      }}
-                    />
                     <DetailTabs2
                       product={productData}
                       nft_data={props.info.nft_data}
