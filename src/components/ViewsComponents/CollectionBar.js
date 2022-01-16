@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2022-01-10 14:24:37
- * @LastEditTime: 2022-01-15 17:21:43
+ * @LastEditTime: 2022-01-16 10:13:36
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /sell-react-2-0(1)/src/components/ViewsComponents/CollectionBar.js
@@ -35,7 +35,7 @@ const CollectionBar = (props) => {
             <a className="list-group-item d-flex justify-content-between align-items-center">
               <span>
                 <Icon icon="male-user-1" className=" svg-icon-heavy me-2" />
-                Profile
+                My Profile
               </span>
             </a>
           </ActiveLink>
@@ -46,7 +46,7 @@ const CollectionBar = (props) => {
                   icon="navigation-map-1"
                   className=" svg-icon-heavy me-2"
                 />
-                Collection
+                My Collection
               </span>
             </a>
           </ActiveLink>

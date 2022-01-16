@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap"
 const DetailInfo = ({ data }) => {
   return (
     <>
-      <h1 className="mb-4">{data.shop_title}</h1>
+      <h1 className="mb-4" style={{fontWeight: 'bolder'}}>{data.shop_title}</h1>
       <div className="d-flex flex-column flex-sm-row align-items-sm-center justify-content-sm-between mb-4">
         <div className="d-flex detail-item-1">
           <img src={"/img/dengpao.png"} className="eye-icon" />
@@ -26,7 +26,7 @@ const DetailInfo = ({ data }) => {
           {"("}$ {data.price}{")"}
         </div>
       </div>
-      <Button variant="dark" size="small" className="mb-1" onClick={() => {window.location.href = data.make_an_offer}} style={{marginTop: 30}}>
+      <Button variant="dark" size="small" className="mb-1" onClick={() => {window.open(data.make_an_offer)}} style={{marginTop: 30}}>
         <img src={'/img/label1.png'} className="price4"/>
         {/* <FontAwesomeIcon icon={faShoppingCart} className="me-2" /> */}
         go to make an offer

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-11-08 10:14:40
- * @LastEditTime: 2022-01-15 17:33:59
+ * @LastEditTime: 2022-01-16 10:12:35
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /sell-react-2-0(1)/src/components/Header/Icons.js
@@ -98,14 +98,14 @@ export default function Icons({
                 router.push("/profile")
               }}
             >
-              Profile
+              My Profile
             </Dropdown.Item>
             <Dropdown.Item
               onClick={() => {
                 router.push("/collection")
               }}
             >
-              Collection
+              My Collection
             </Dropdown.Item>
             <Dropdown.Item
               onClick={() => {
@@ -113,7 +113,7 @@ export default function Icons({
                 router.replace("/customer-login")
               }}
             >
-              Sign Out
+              Log Out
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>

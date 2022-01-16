@@ -18,7 +18,7 @@ export async function getServerSideProps(context) {
   let info = {}
   if (context.query.id) {
     const res = await GetShopDetail(context.query.id)
-    console.log(res, 'ressss')
+    console.log(res, "ressss")
     info.author = res.author
     info.author_src = GetImage(res.author_src)
     info.image_src = GetImage(res.image_src)
@@ -33,13 +33,13 @@ export async function getServerSideProps(context) {
       info.roblox_data = JSON.parse(JSON.stringify(res.roblox.roblox_data))
     }
     if (res.nft_data) {
-      info.nft_data = res.nft_data;
+      info.nft_data = res.nft_data
     }
     if (res.roblox.description) {
-      info.description = res.roblox.description;
+      info.description = res.roblox.description
     }
     if (res.roblox.comments) {
-      info.comments = JSON.parse(JSON.stringify(res.roblox.comments));
+      info.comments = JSON.parse(JSON.stringify(res.roblox.comments))
     }
     if (res.trading_info.price_history) {
       info.price_history = JSON.parse(
@@ -99,10 +99,10 @@ export default function MyDetail(props) {
               <Row>
                 <Col
                   xs={{ span: 12, order: 2 }}
-                  lg={{ span: 6, order: 1 }}
+                  lg={{ span: 5, order: 1 }}
                   className="py-3"
                 >
-                  <Swiper
+                  {/* <Swiper
                     className="detail-full"
                     slidesPerView={1}
                     modules={[Pagination]}
@@ -123,12 +123,20 @@ export default function MyDetail(props) {
                           />
                         </div>
                       </SwiperSlide>
-                  </Swiper>
+                  </Swiper> */}
+                  <div className="detail-swiper-ll-xx">
+                    <img
+                      src={props.info.image_src}
+                      alt="..."
+                      layout="fill"
+                      className="bg-image-1"
+                      priority
+                    />
+                  </div>
                 </Col>
                 <Col
                   xs={{ span: 12, order: 1 }}
-                  lg={{ span: 6, order: 2 }}
-                  xl="5"
+                  lg={{ span: 7, order: 2 }}
                   className="d-flex"
                   style={{ marginTop: 18 }}
                 >
@@ -145,8 +153,12 @@ export default function MyDetail(props) {
                         star: props.info?.star,
                         views: props.info?.views,
                         make_an_offer: props.info?.make_an_offer,
-                        author: _author
+                        author: _author,
                       }}
+                    />
+                    <DetailTabs2
+                      product={productData}
+                      nft_data={props.info.nft_data}
                     />
                   </div>
                 </Col>
@@ -154,30 +166,41 @@ export default function MyDetail(props) {
               <Row>
                 <Col
                   xs={{ span: 12, order: 2 }}
-                  lg={{ span: 6, order: 1 }}
+                  lg={{ span: 5, order: 1 }}
                   className="py-3"
                 >
-                  <DetailTabs1 product={productData} roblox_data={props.info.roblox_data} description={props.info.description} comments={props.info.comments} />
+                  <DetailTabs1
+                    product={productData}
+                    roblox_data={props.info.roblox_data}
+                    description={props.info.description}
+                    comments={props.info.comments}
+                  />
                 </Col>
                 <Col
                   xs={{ span: 12, order: 2 }}
-                  lg={{ span: 6, order: 1 }}
+                  lg={{ span: 7, order: 1 }}
                   className="py-3"
                 >
-                  <DetailTabs2 product={productData} nft_data={props.info.nft_data} />
+                  <DetailTabs3
+                    product={productData}
+                    price_history={props.info.price_history}
+                    list_history={props.info.list_history}
+                    offer_history={props.info.offer_history}
+                    item_activity={props.info.item_activity}
+                  />
                 </Col>
               </Row>
             </Col>
           </Row>
         </Container>
       </section>
-      <DetailTabs3
+      {/* <DetailTabs3
         product={productData}
         price_history={props.info.price_history}
         list_history={props.info.list_history}
         offer_history={props.info.offer_history}
         item_activity={props.info.item_activity}
-      />
+      /> */}
     </>
   )
 }

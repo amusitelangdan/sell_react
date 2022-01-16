@@ -334,7 +334,7 @@
 .detail-price-title {
     color: #868e96;
     font-size: 14px;
-    margin-top: 82px;
+    margin-top: 30px;
 }
 
 .price-list-detail1 {
@@ -445,5 +445,19 @@
         top: 50%;
         transform: translateY(-50%);
         right: 20px;
+    }
+}
+
+.detail-swiper-ll-xx {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px 5px rgb(0, 0 ,0 , 10%), 0 2px 4px 1px rgb(0, 0, 0,  6%);
+    img.bg-image-1 {
+        width: 100%;
+        object-fit: cover;
+        display: block;
     }
 }

@@ -21,9 +21,9 @@ const App = ({ Component, pageProps }) => {
       getUser(GetLocal("user"))
     } else {
       setLoggedUser(false)
-      setAvatar('')
-      setName()
-      setEmail()
+      setAvatar("")
+      setName('')
+      setEmail('')
     }
     console.log(123)
   }, [Component, pageProps])
@@ -37,7 +37,11 @@ const App = ({ Component, pageProps }) => {
     }
     if (res.code === "100") {
       localStorage.removeItem("user")
-      return router.replace("/customer-login")
+      setLoggedUser(false)
+      setAvatar('')
+      setName('')
+      setEmail('')
+      return false;
     }
 
     if (res.code === "300") {
@@ -48,7 +52,7 @@ const App = ({ Component, pageProps }) => {
     }
 
     setLoggedUser(true)
-    setAvatar(GetImage(res.data.avatar))
+    setAvatar(GetImage(res.data?.avatar ? res.data?.avatar : ''))
     setName(res.data.name)
     setEmail(res.data.email)
   }
