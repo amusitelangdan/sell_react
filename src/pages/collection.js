@@ -11,7 +11,7 @@ import products from "../data/products.json"
 import data from "../data/collection.json"
 import ShopPagination from "../components/ShopPagination"
 import { useEffect, useState } from "react"
-import { getCollection, GetImage, GetUserInfo, GetLocal } from "../api/api"
+import { getCollection, GetImage, GetUserInfo, GetLocal, getAddStar } from "../api/api"
 import { useRouter } from "next/router"
 import { notification } from "antd"
 
@@ -165,6 +165,39 @@ export default function Collection(props) {
                       onClick={(v) => {
                         router.push(`/detail?id=${v.id}`)
                       }}
+                      onStar={async (d) => {
+                        if (GetLocal('user')) {
+                          const res = await getAddStar(d.id, GetLocal('user'))
+                          console.log(res);
+                          if (res.code === '100') {
+                            notification.error({
+                              message: 'Please Login',
+                              placement: 'bottomRight',
+                            })
+                            return router.replace(`/customer-login`)
+                          }
+
+                          if (res.code === "404") {
+                            return notification.error({
+                              message: res.data && res.data.msg ? res.data.msg : 'ERROR',
+                              placement: "bottomRight",
+                            })
+                          }
+
+                          if (res.code === '200') {
+                            const __nfts = JSON.parse(JSON.stringify(_nefts));
+                            __nfts.forEach((item) => {
+                              if (item.id === d.id) {
+                                item.is_star = !item.is_star;
+                                item.star = item.is_star ? item.star - 1 : item.star + 1;
+                              }
+                            })
+                            setNefts(__nfts);
+                          }
+                        } else {
+                          router.push(`/customer-login`)
+                        }
+                      }}
                       data={{
                         image: `http://45.63.15.204:8001/${item.imgSrc}`,
                         title: item.meta_title,
@@ -172,6 +205,7 @@ export default function Collection(props) {
                         price: item.price,
                         name: item.meta_title,
                         star: item.star,
+                        is_star: item.is_star,
                         last_price: item.last_price,
                         author_src: `http://45.63.15.204:8001/${item.author_src}`,
                         author: item.author,

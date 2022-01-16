@@ -96,7 +96,7 @@ export default function MyDetail(props) {
         <Container>
           <Row>
             <Col xs="12" className="products-grid sidebar-none">
-              <Row>
+              <Row className="aaaaxxxxxxx">
                 <Col
                   xs={{ span: 12, order: 2 }}
                   lg={{ span: 5, order: 1 }}
@@ -140,7 +140,7 @@ export default function MyDetail(props) {
                   className="d-flex"
                   style={{ marginTop: 18 }}
                 >
-                  <div>
+                  <div style={{width: '100%'}}>
                     <div className="detail_author_info">
                       <img className="author_avator" src={_authorSrc} />
                       <h5 className="text-uppercase">{_author}</h5>

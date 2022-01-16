@@ -49,10 +49,10 @@ const DetailTabs2 = ({ product, nft_data }) => {
           </Nav>
           <Tab.Content className="py-4">
             <Tab.Pane eventKey="details" className="px-3">
-              <Row>
-                <Col md="12" style={{overflowX: 'auto'}}>
+              <Row className="mb-5">
+                <Col md="12"  style={{overflow: 'auto', maxHeight: '290px'}}>
                   {nft_data && nft_data.details ? (
-                    <Table className="text-sm">
+                    <Table className="text-sm" hover>
                       <tbody>
                         <tr>
                           <th className={`text-uppercase fw-normal`}>

@@ -68,8 +68,8 @@ const DetailTabs3 = ({
           <Tab.Content className="py-4">
             <Tab.Pane eventKey="first" className="px-3">
               <Row>
-                <Col md="12"  style={{overflowX: 'auto'}}>
-                  <Table striped bordered hover>
+                <Col md="12"  style={{overflow: 'auto', maxHeight: '290px'}}>
+                  <Table hover>
                     <thead>
                       <tr>
                         <th>Price</th>
@@ -90,8 +90,8 @@ const DetailTabs3 = ({
             </Tab.Pane>
             <Tab.Pane eventKey="second">
               <Row>
-                <Col md="12"  style={{overflowX: 'auto'}}>
-                  <Table striped bordered hover>
+                <Col md="12"  style={{overflow: 'auto', maxHeight: '290px'}}>
+                  <Table hover>
                     <thead>
                       <tr>
                         <th>Unit Price</th>
@@ -118,8 +118,8 @@ const DetailTabs3 = ({
             </Tab.Pane>
             <Tab.Pane eventKey="third">
               <Row className="mb-5">
-                <Col md="12"  style={{overflowX: 'auto'}}>
-                  <Table striped bordered hover>
+                <Col md="12"  style={{overflow: 'auto', maxHeight: '290px'}}>
+                  <Table hover>
                     <thead>
                       <tr>
                         <th>Unit Price</th>
@@ -148,8 +148,8 @@ const DetailTabs3 = ({
             </Tab.Pane>
             <Tab.Pane eventKey="activity">
               <Row className="mb-5">
-                <Col md="12"  style={{overflowX: 'auto'}}>
-                  <Table striped bordered hover>
+                <Col md="12"  style={{overflow: 'auto', maxHeight: '290px'}}>
+                  <Table hover>
                     <thead>
                       <tr>
                         <th>Event</th>

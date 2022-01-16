@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2022-01-12 14:55:07
- * @LastEditTime: 2022-01-15 20:42:37
+ * @LastEditTime: 2022-01-16 13:57:57
  * @LastEditors: Please set LastEditors
  * @Description: api 文档
  * @FilePath: /sell-react-2-0(1)/src/api/api.js
@@ -28,8 +28,8 @@ export const getBanner = async () => {
   return json
 }
 
-export const getNfts = async (page = 1) => {
-  const res = await fetch(`${baseURL}/api/nfts?page=${page}&size=20`)
+export const getNfts = async (page = 1, userid = '') => {
+  const res = await fetch(`${baseURL}/api/nfts?page=${page}&size=20${userid !== '' && userid ? `&userid=${userid}`: ''}`)
   const json = await res.json()
   return json
 }
@@ -208,4 +208,24 @@ export const PostActivite = async (token) => {
 
 export const GetImage = (src) => {
   return `${baseURL}${src}`
+}
+
+
+export const getAddStar = async (id, userid) => {
+  const res = await fetch(`${baseURL}/api/favorited`, {
+    method: "POST",
+    body: JSON.stringify({ userid, tokenid: id }),
+  })
+  if (res.status === 200) {
+    const json = await res.json()
+    return json
+  } else {
+    notification.error({
+      message: "Service Error",
+      placement: "bottomRight",
+    })
+    return {
+      code: "404",
+    }
+  }
 }

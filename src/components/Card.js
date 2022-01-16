@@ -84,7 +84,7 @@ import { Card } from "react-bootstrap"
 import Image from "./CustomImage"
 import Icon from "./Icon"
 import Link from "next/link"
-const src = require("./../../public/img/photo/benjamin-voros-260869-unsplash.jpg")
+const src = require("./../../public/img/photo/benjamin-voros-260869-unsplash.jpg");
 
 // const CardComponent = ({ data, onClick = () => {} }) => {
 //   return (
@@ -156,7 +156,7 @@ const src = require("./../../public/img/photo/benjamin-voros-260869-unsplash.jpg
 //   )
 // }
 
-const CardComponent = ({ data, onClick = () => {} }) => {
+const CardComponent = ({ data, onClick = () => {}, onStar= () => {} }) => {
   return (
     <>
       <section>
@@ -221,9 +221,16 @@ const CardComponent = ({ data, onClick = () => {} }) => {
                           borderRadius: "30px",
                           color: "#ffffff",
                         }}
+                        onClick={async (e) => {
+                          e.stopPropagation();
+                          console.log(1)
+                          onStar(data);
+                        }}
                       >
                         {data.is_star ? (
-                          <></>
+                          <>
+                          <img src={'/img/icon_like_check_@2x.png'} style={{width: 18, height: 18}}/>
+                          </>
                         ) : (
                           <Icon className="card_item_icon" icon="heart-1" />
                         )}

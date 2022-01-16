@@ -1,6 +1,6 @@
 import { Container, Row, Col } from "react-bootstrap"
 import ShopPagination from "../components/ShopPagination"
-import { getBanner, getNfts, parseCookies } from "./../api/api"
+import { getBanner, getNfts, getAddStar, GetLocal } from "./../api/api"
 import CardLookbook from "../components/CardLookbook"
 import CardComponent from "./../components/Card"
 import Swiper from "../components/Swiper"
@@ -8,6 +8,7 @@ import Swiper from "../components/Swiper"
 import data from "../data/index.json"
 import { useEffect, useState } from "react"
 import { useRouter } from "next/router"
+import { notification } from "antd"
 
 export async function getServerSideProps(context) {
   const json = await getBanner()
@@ -17,26 +18,27 @@ export async function getServerSideProps(context) {
   } else {
     options.page = 1
   }
-  const json2 = await getNfts(options.page)
+  // const json2 = await getNfts(options.page)
+  // console.log(json2);
   return {
     props: {
-      title: "Homepage",
+      title: "NFTS",
       imageList: json,
-      nefts: json2.list,
-      page: json2.page,
-      size: json2.size,
-      total: json2.total,
+      // nefts: json2.list,
+      // page: json2.page,
+      // size: json2.size,
+      // total: json2.total,
       // loggedUser: true,
     },
   }
 }
 
-export default function MyNFTS(props) {
+export default function Home(props) {
   const [_swiper, setSwiper] = useState([])
-  const [_total, setTotal] = useState(props.total)
-  const [_page, setPage] = useState(props.page)
-  const [_size, setSize] = useState(props.size)
-  const [_nefts, setNefts] = useState(props.nefts)
+  const [_total, setTotal] = useState(0)
+  const [_page, setPage] = useState(1)
+  const [_size, setSize] = useState(20)
+  const [_nefts, setNefts] = useState([])
   const router = useRouter()
 
   useEffect(() => {
@@ -62,14 +64,15 @@ export default function MyNFTS(props) {
       setSwiper(_image_list)
     }
 
-    setTotal(props.total)
-    setPage(props.page)
-    setSize(props.size)
-    setNefts(props.nefts)
+    // setTotal(props.total)
+    // setPage(props.page)
+    // setSize(props.size)
+    // setNefts(props.nefts)
+    getNefts(1)
   }, [props])
 
   const getNefts = async (v) => {
-    const json = await getNfts(v)
+    const json = await getNfts(v, GetLocal('user'))
     console.log(json, "res")
     if (json.list) {
       setNefts(json.list)
@@ -116,6 +119,39 @@ export default function MyNFTS(props) {
                       onClick={(v) => {
                         router.push(`/detail?id=${v.id}`)
                       }}
+                      onStar={async (d) => {
+                        if (GetLocal('user')) {
+                          const res = await getAddStar(d.id, GetLocal('user'))
+                          console.log(res);
+                          if (res.code === '100') {
+                            notification.error({
+                              message: 'Please Login',
+                              placement: 'bottomRight',
+                            })
+                            return router.replace(`/customer-login`)
+                          }
+
+                          if (res.code === "404") {
+                            return notification.error({
+                              message: res.data && res.data.msg ? res.data.msg : 'ERROR',
+                              placement: "bottomRight",
+                            })
+                          }
+
+                          if (res.code === '200') {
+                            const __nfts = JSON.parse(JSON.stringify(_nefts));
+                            __nfts.forEach((item) => {
+                              if (item.id === d.id) {
+                                item.is_star = !item.is_star;
+                                item.star = item.is_star ? item.star - 1 : item.star + 1;
+                              }
+                            })
+                            setNefts(__nfts);
+                          }
+                        } else {
+                          router.push(`/customer-login`)
+                        }
+                      }}
                       data={{
                         image: `http://45.63.15.204:8001/${item.imgSrc}`,
                         title: item.meta_title,
@@ -126,7 +162,8 @@ export default function MyNFTS(props) {
                         last_price: item.last_price,
                         author_src: `http://45.63.15.204:8001/${item.author_src}`,
                         author: item.author,
-                        id: item.id
+                        id: item.id,
+                        is_star: item.is_star
                       }}
                     />
                   </Col>
