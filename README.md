@@ -1,3 +1,40 @@
+# 代码启动
+
+```
+npm install
+```
+
+# 本地开发
+
+```
+npm run dev
+```
+
+# 远程部署
+
+## 1. 将代码scp 到服务器
+
+## 2. 进入代码根目录
+```
+npm install
+```
+
+## 3. 打包
+```
+npm run build
+```
+
+## 4. pm2部署
+
+```
+ pm2 start npm --watch --name sell_react -- start
+```
+
+# 服务器配置
+
+## 1. node (用来install 代码需要的node_modules包)
+## 2. pm2 (用来在服务器部署)
+## 3. nginx (域名等)
 # 首页
 
 1. banner 图片list
