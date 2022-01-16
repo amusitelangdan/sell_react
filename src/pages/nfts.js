@@ -22,7 +22,7 @@ export async function getServerSideProps(context) {
   // console.log(json2);
   return {
     props: {
-      title: "NFTS",
+      title: "More NFTS",
       imageList: json,
       // nefts: json2.list,
       // page: json2.page,

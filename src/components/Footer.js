@@ -162,9 +162,9 @@ const Footer = () => {
                   <img
                     width="32"
                     height="32"
-                    src="/img/logo/logo_foot.png"
+                    src="/img/logo/Robloxlogo20191.png"
                     alt="..."
-                    style={{width: '5rem', cursor: 'pointer'}}
+                    style={{height: 35, cursor: 'pointer', width: 'auto'}}
                     onClick={() => {
                       window.open('https://www.roblox.com/games/8288551355/Meta-Yearning-Land')
                     }}

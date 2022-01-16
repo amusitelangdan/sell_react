@@ -52,7 +52,7 @@ const Introduction = () => {
             <div className="text-lg">
               <p>
                 Hey, welcome to the
-                <strong>Sell Theme official documentation</strong>.
+                <strong>Meta Yearning official documentation</strong>.
               </p>
               <p>
                 If you own a theme’s license already, thank you very much for

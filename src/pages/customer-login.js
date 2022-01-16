@@ -20,7 +20,7 @@ export async function getStaticProps() {
       nav: {
         light: true,
       },
-      title: "Customer - Login",
+      title: "My Login",
     },
   }
 }

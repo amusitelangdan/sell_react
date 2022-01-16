@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-11-08 10:14:40
- * @LastEditTime: 2022-01-15 16:49:33
+ * @LastEditTime: 2022-01-16 18:13:25
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /sell-react-2-0(1)/src/components/Layout.js
@@ -42,7 +42,7 @@ const Layout = (pageProps) => {
         className={pageProps.className}
       >
         <Head>
-          <title>{pageProps.title} - Sell Theme [React]</title>
+          <title>{pageProps.title} - Meta Yearning</title>
         </Head>
 
         <NextNProgress color="#3494E6" options={{ showSpinner: false }} />

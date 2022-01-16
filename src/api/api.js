@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2022-01-12 14:55:07
- * @LastEditTime: 2022-01-16 13:57:57
+ * @LastEditTime: 2022-01-16 18:41:49
  * @LastEditors: Please set LastEditors
  * @Description: api 文档
  * @FilePath: /sell-react-2-0(1)/src/api/api.js
@@ -156,7 +156,7 @@ export const UpdateUser = async (userid, email, name) => {
 }
 
 export const GetShopDetail = async (shopid) => {
-  const res = await fetch(`${baseURL}/api/shop_detail?shop_id=${shopid}`)
+  const res = await fetch(`${baseURL}/api/shop_detail?shop_id=${shopid}${GetLocal('user') ? `&userid=${GetLocal('user')}`: ''}`)
   if (res.status === 200) {
     const json = await res.json()
     return json

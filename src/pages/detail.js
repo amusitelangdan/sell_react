@@ -67,7 +67,7 @@ export async function getServerSideProps(context) {
         nav: {
           light: true,
         },
-        title: "Product Detail",
+        title: "Detail",
         info: info,
       },
     }
@@ -77,7 +77,7 @@ export async function getServerSideProps(context) {
       nav: {
         light: true,
       },
-      title: "Product Detail",
+      title: "Detail",
       info: info,
     },
   }

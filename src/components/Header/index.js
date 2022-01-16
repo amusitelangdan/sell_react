@@ -269,19 +269,23 @@ const Header = (props) => {
                               href={item.link}
                               passHref
                             >
-                              <Nav.Link onClick={() => onLinkClick(item.title)}>
+                              <Nav.Link onClick={() => onLinkClick(item.title)} style={{color: '#000000'}}>
                                 {/* {item.title} */}
                                 {/* navbar-sticky bg-fixed-white  navbar-airy navbar navbar-expand-lg navbar-light */}
                                 {/* bg-hover-white bg-fixed-white navbar-hover-light navbar-fixed-light  navbar-airy navbar navbar-expand-lg navbar-dark */}
                                 {item.title === "META YEARNING" ? (
+                                  // <img
+                                  //   src={`${
+                                  //     additionalNavClasses === "fixed-top"
+                                  //       ? "/img/logo/logo.png"
+                                  //       : props.nav.color
+                                  //       ? "/img/logo/logo1.png"
+                                  //       : "/img/logo/logo.png"
+                                  //   }`}
+                                  //   style={{ height: 30 }}
+                                  // />
                                   <img
-                                    src={`${
-                                      additionalNavClasses === "fixed-top"
-                                        ? "/img/logo/logo.png"
-                                        : props.nav.color
-                                        ? "/img/logo/logo1.png"
-                                        : "/img/logo/logo.png"
-                                    }`}
+                                    src={`${"/img/logo/logo.png"}`}
                                     style={{ height: 30 }}
                                   />
                                 ) : (

@@ -15,6 +15,14 @@ import { getCollection, GetImage, GetUserInfo, GetLocal, getAddStar } from "../a
 import { useRouter } from "next/router"
 import { notification } from "antd"
 
+export async function getStaticProps() {
+  return {
+    props: {
+      title: "My Collection",
+    },
+  }
+}
+
 export default function Collection(props) {
   const [_nefts, setNefts] = useState([])
   const [_total, setTotal] = useState(0)
