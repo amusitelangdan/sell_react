@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-11-08 10:14:40
- * @LastEditTime: 2022-01-16 10:12:35
+ * @LastEditTime: 2022-01-16 19:23:38
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /sell-react-2-0(1)/src/components/Header/Icons.js
@@ -122,7 +122,7 @@ export default function Icons({
           {/* User Not Logged - link to login page*/}
           <Link href="/customer-login">
             <a className="navbar-icon-link">
-              <Icon icon="male-user-1" />
+              <Icon icon="male-user-1" className="xiconxxx" />
 
               <span className="text-sm ms-2 ms-lg-0 text-uppercase text-sm fw-bold d-none d-sm-inline d-lg-none">
                 Log in
