@@ -13,7 +13,7 @@ const DetailTabs2 = ({ product, nft_data }) => {
 
   return (
     <section className="mt-5">
-      <Container>
+      <Container className="xkxkxkxkxkkx" style={{padding: '0 !important'}}>
         <Tab.Container defaultActiveKey="properties">
           <Nav variant="tabs" className="flex-column flex-sm-row">
             <Nav.Item>
@@ -47,12 +47,12 @@ const DetailTabs2 = ({ product, nft_data }) => {
               </Nav.Link>
             </Nav.Item>
           </Nav>
-          <Tab.Content className="py-0" style={{paddingTop: '1.5rem !important'}}>
+          <Tab.Content className="py-0 tab-contentxxxxx" style={{paddingTop: '1.5rem !important'}}>
             <Tab.Pane eventKey="details" className="px-3">
-              <Row className="mb-5" style={{marginBottom: '0 !important'}}>
+              <Row className="mb-5 xxxxxiiiiii" style={{marginBottom: '0 !important'}}>
                 <Col md="12"  style={{overflow: 'auto', maxHeight: '150px'}}>
                   {nft_data && nft_data.details ? (
-                    <Table className="text-sm" hover style={{marginBottom: '0 !important'}}>
+                    <Table className="text-sm xxxxxiiiiii" hover style={{marginBottom: '0 !important'}}>
                       <tbody>
                         <tr>
                           <th className={`text-uppercase fw-normal`}>

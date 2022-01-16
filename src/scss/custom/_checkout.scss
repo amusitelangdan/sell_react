@@ -37,8 +37,8 @@
     @include uppercase;
     color: $gray-700;
     &.active {
-        background: $gray-700;
-        color: #fff;
+        background: $gray-700 !important;
+        color: #fff !important;
         &::after {
             display: none;
         }

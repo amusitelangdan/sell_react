@@ -140,7 +140,7 @@ export default function MyDetail(props) {
                   className="d-flex"
                   style={{ marginTop: 18 }}
                 >
-                  <div style={{width: '100%'}}>
+                  <div style={{width: '100%', boxSizing: 'border-box', padding: '0 45px'}}>
                     <div className="detail_author_info">
                       <img className="author_avator" src={_authorSrc} />
                       <h5 className="text-uppercase">{_author}</h5>

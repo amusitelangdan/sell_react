@@ -72,7 +72,7 @@ const DetailTabs1 = memo(({
   }
 
   return (
-    <section className="mt-5" style={{marginBottom: 0,marginTop: '0px !important'}}>
+    <section className="mt-5 classsssxxx" style={{marginBottom: '0 !important',marginTop: '0px !important'}}>
       <Container>
         <Tab.Container defaultActiveKey="second">
           <Nav variant="tabs" className="flex-column flex-sm-row">

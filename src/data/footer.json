@@ -1,6 +1,6 @@
 [
   {
-    "title": "<div class='fw-bold text-uppercase text-lg text-dark mb-3'>meta yearning<span class='text-primary'>.</span></div>",
+    "title": "<div class='fw-bold text-uppercase text-lg text-dark mb-3'><img src='/img/logo/logo.png' style='height: 30px'/></div>",
     "logo": true,
     "lg": "4"
   },

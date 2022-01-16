@@ -20,6 +20,7 @@ import {
   faTwitter,
   faVimeo,
 } from "@fortawesome/free-brands-svg-icons"
+import { useRouter } from 'next/router';
 
 import ServicesBlock from "./ServicesBlock"
 
@@ -152,44 +153,34 @@ const Footer = () => {
           <Row className="align-items-center" style={{width: '100%', justifyContent: 'space-between'}}>
             <Col md="6" className="text-center text-md-start">
               <p className="text-sm mb-md-0">
-                © 2021, Your company. All rights reserved.
+                © 2021, Wivenhoe Metaverse Ltd,. All right reserved.
               </p>
             </Col>
             <Col md="6">
               <ul className="list-inline mb-0 mt-2 mt-md-0 text-center text-md-end">
-                <li className="list-inline-item">
+                <li className="list-inline-item" style={{marginRight: 10}}>
                   <img
                     width="32"
                     height="32"
-                    src="/svg/visa.svg"
+                    src="/img/logo/logo_foot.png"
                     alt="..."
-                    className="w-2rem"
+                    style={{width: '5rem', cursor: 'pointer'}}
+                    onClick={() => {
+                      window.open('https://www.roblox.com/games/8288551355/Meta-Yearning-Land')
+                    }}
+                    className="w-5rem"
                   />
                 </li>
                 <li className="list-inline-item">
                   <img
-                    src="/svg/mastercard.svg"
+                    src="/img/logo/opensea.svg"
+                    style={{width: '5rem', cursor: 'pointer'}}
                     width="32"
                     height="32"
                     alt="..."
-                    className="w-2rem"
-                  />
-                </li>
-                <li className="list-inline-item">
-                  <img
-                    src="/svg/paypal.svg"
-                    width="32"
-                    height="32"
-                    alt="..."
-                    className="w-2rem"
-                  />
-                </li>
-                <li className="list-inline-item">
-                  <img
-                    src="/svg/western-union.svg"
-                    width="32"
-                    height="32"
-                    alt="..."
+                    onClick={() => {
+                      window.open('https://opensea.io/collection/metayearning-collection')
+                    }}
                     className="w-2rem"
                   />
                 </li>

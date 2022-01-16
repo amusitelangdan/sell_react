@@ -27,8 +27,7 @@ import Icons from "./Icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBars } from "@fortawesome/free-solid-svg-icons"
 import MegaMenu from "./MegaMenu"
-import LoginDrop from './Login';
-
+import LoginDrop from "./Login"
 
 const Header = (props) => {
   const [collapsed, setCollapsed] = useState(false)
@@ -136,7 +135,10 @@ const Header = (props) => {
             {/* Navbar Collapse */}
             <Navbar.Collapse>
               <>
-                <Nav className="mx-auto nav-box">
+                <Nav
+                  className="mx-auto nav-box"
+                  style={{ alignItems: "center" }}
+                >
                   {menu &&
                     menu.map((item) =>
                       item.dropdown || item.megamenu ? (
@@ -155,7 +157,10 @@ const Header = (props) => {
                                 parentName === item.title ? "active" : ""
                               }
                             >
-                              {item.title}
+                              {/* {
+                                item.title === 'META YEARNING' ? <img src={'/img/logo/logo.png'} /> : item.title
+                              } */}
+                              {item.title}123
                             </Dropdown.Toggle>
                             <Dropdown.Menu
                               className={`dropdown-menu-animated ${
@@ -265,7 +270,23 @@ const Header = (props) => {
                               passHref
                             >
                               <Nav.Link onClick={() => onLinkClick(item.title)}>
-                                {item.title}
+                                {/* {item.title} */}
+                                {/* navbar-sticky bg-fixed-white  navbar-airy navbar navbar-expand-lg navbar-light */}
+                                {/* bg-hover-white bg-fixed-white navbar-hover-light navbar-fixed-light  navbar-airy navbar navbar-expand-lg navbar-dark */}
+                                {item.title === "META YEARNING" ? (
+                                  <img
+                                    src={`${
+                                      additionalNavClasses === "fixed-top"
+                                        ? "/img/logo/logo.png"
+                                        : props.nav.color
+                                        ? "/img/logo/logo1.png"
+                                        : "/img/logo/logo.png"
+                                    }`}
+                                    style={{ height: 30 }}
+                                  />
+                                ) : (
+                                  item.title
+                                )}
                               </Nav.Link>
                             </ActiveLink>
                           )}
