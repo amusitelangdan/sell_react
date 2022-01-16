@@ -19,7 +19,7 @@ const DetailTabs2 = ({ product, nft_data }) => {
             <Nav.Item>
               <Nav.Link
                 eventKey="properties"
-                className="detail-nav-link text-uppercase"
+                className="detail-nav-link text-capitalize"
                 href="#"
                 onClick={(e) => e.preventDefault()}
               >
@@ -29,7 +29,7 @@ const DetailTabs2 = ({ product, nft_data }) => {
             <Nav.Item>
               <Nav.Link
                 eventKey="about"
-                className="detail-nav-link text-uppercase"
+                className="detail-nav-link text-capitalize"
                 href="#"
                 onClick={(e) => e.preventDefault()}
               >
@@ -39,7 +39,7 @@ const DetailTabs2 = ({ product, nft_data }) => {
             <Nav.Item>
               <Nav.Link
                 eventKey="details"
-                className="detail-nav-link text-uppercase"
+                className="detail-nav-link text-capitalize"
                 href="#"
                 onClick={(e) => e.preventDefault()}
               >
@@ -55,7 +55,7 @@ const DetailTabs2 = ({ product, nft_data }) => {
                     <Table className="text-sm xxxxxiiiiii" hover style={{marginBottom: '0 !important'}}>
                       <tbody>
                         <tr>
-                          <th className={`text-uppercase fw-normal`}>
+                          <th className={`text-capitalize fw-normal`}>
                             contract address
                           </th>
                           <td>
@@ -65,7 +65,7 @@ const DetailTabs2 = ({ product, nft_data }) => {
                           </td>
                         </tr>
                         <tr>
-                          <th className={`text-uppercase fw-normal`}>
+                          <th className={`text-capitalize fw-normal`}>
                             token ID
                           </th>
                           <td>
@@ -75,7 +75,7 @@ const DetailTabs2 = ({ product, nft_data }) => {
                           </td>
                         </tr>
                         <tr>
-                          <th className={`text-uppercase fw-normal`}>
+                          <th className={`text-capitalize fw-normal`}>
                             Token standrad
                           </th>
                           <td>
@@ -85,7 +85,7 @@ const DetailTabs2 = ({ product, nft_data }) => {
                           </td>
                         </tr>
                         <tr>
-                          <th className={`text-uppercase fw-normal`}>
+                          <th className={`text-capitalize fw-normal`}>
                             blockchain
                           </th>
                           <td>
@@ -108,11 +108,11 @@ const DetailTabs2 = ({ product, nft_data }) => {
                 {nft_data && nft_data.properties ? (
                   <div className="properties0">
                     <div className="properties1">
-                      <div className="text-uppercase properties2">creator</div>
-                      <div className="text-uppercase properties3">
+                      <div className="text-capitalize properties2">creator</div>
+                      <div className="text-capitalize properties3">
                         {nft_data.properties}
                       </div>
-                      <div className="text-uppercase properties4">
+                      <div className="text-capitalize properties4">
                         0.01% have this trait
                       </div>
                     </div>

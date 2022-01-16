@@ -83,7 +83,7 @@ const DetailTabs1 = memo(
               <Nav.Item>
                 <Nav.Link
                   eventKey="second"
-                  className="detail-nav-link text-uppercase"
+                  className="detail-nav-link text-capitalize"
                   href="#"
                   onClick={(e) => e.preventDefault()}
                 >
@@ -93,7 +93,7 @@ const DetailTabs1 = memo(
               <Nav.Item>
                 <Nav.Link
                   eventKey="first"
-                  className="detail-nav-link text-uppercase"
+                  className="detail-nav-link text-capitalize"
                   href="#"
                   onClick={(e) => e.preventDefault()}
                 >
@@ -103,7 +103,7 @@ const DetailTabs1 = memo(
               <Nav.Item>
                 <Nav.Link
                   eventKey="third"
-                  className="detail-nav-link text-uppercase"
+                  className="detail-nav-link text-capitalize"
                   href="#"
                   onClick={(e) => e.preventDefault()}
                 >
@@ -122,7 +122,7 @@ const DetailTabs1 = memo(
                         {infoBlock.map((info, index) => (
                           <tr key={index}>
                             <th
-                              className={`text-uppercase fw-normal ${
+                              className={`text-capitalize fw-normal ${
                                 index == 0 ? "border-0" : ""
                               }`}
                             >

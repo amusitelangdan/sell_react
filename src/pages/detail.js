@@ -143,7 +143,7 @@ export default function MyDetail(props) {
                   <div style={{width: '100%', boxSizing: 'border-box', padding: '0 45px'}}>
                     <div className="detail_author_info">
                       <img className="author_avator" src={_authorSrc} />
-                      <h5 className="text-uppercase">{_author}</h5>
+                      <h5 className="text-capitalize qwerzxc">{_author}</h5>
                     </div>
                     <DetailInfo
                       data={{

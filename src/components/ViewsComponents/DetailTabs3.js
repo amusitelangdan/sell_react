@@ -27,7 +27,7 @@ const DetailTabs3 = ({
             <Nav.Item>
               <Nav.Link
                 eventKey="first"
-                className="detail-nav-link"
+                className="detail-nav-link text-capitalize"
                 href="#"
                 onClick={(e) => e.preventDefault()}
               >
@@ -37,7 +37,7 @@ const DetailTabs3 = ({
             <Nav.Item>
               <Nav.Link
                 eventKey="second"
-                className="detail-nav-link"
+                className="detail-nav-link text-capitalize"
                 href="#"
                 onClick={(e) => e.preventDefault()}
               >
@@ -47,7 +47,7 @@ const DetailTabs3 = ({
             <Nav.Item>
               <Nav.Link
                 eventKey="third"
-                className="detail-nav-link"
+                className="detail-nav-link text-capitalize"
                 href="#"
                 onClick={(e) => e.preventDefault()}
               >
@@ -57,7 +57,7 @@ const DetailTabs3 = ({
             <Nav.Item>
               <Nav.Link
                 eventKey="activity"
-                className="detail-nav-link"
+                className="detail-nav-link text-capitalize"
                 href="#"
                 onClick={(e) => e.preventDefault()}
               >
