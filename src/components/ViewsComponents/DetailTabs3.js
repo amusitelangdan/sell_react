@@ -20,7 +20,7 @@ const DetailTabs3 = ({
   const groupedAdditionalInfo = groupByN(4, product.additionalinfo)
 
   return (
-    <section className="mt-5">
+    <section className="mt-0" style={{marginBottom: 0, marginTop: '0px !important'}}>
       <Container>
         <Tab.Container defaultActiveKey="first">
           <Nav variant="tabs" className="flex-column flex-sm-row">
