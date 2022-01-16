@@ -25,6 +25,7 @@ import { useRouter } from 'next/router';
 import ServicesBlock from "./ServicesBlock"
 
 const Footer = () => {
+  const router = useRouter();
   return (
     <footer className="position-relative z-index-10 d-print-none">
       {/* Services block*/}
@@ -40,7 +41,12 @@ const Footer = () => {
                   lg={item.lg && item.lg}
                   md={item.md && item.md}
                   className="mb-5 mb-lg-0"
-                  style={{width: "fit-content"}}
+                  style={{width: "fit-content", cursor: 'pointer', marginLeft: 7}}
+                  onClick={() => {
+                    if (item.link) {
+                      router.push(item.link)
+                    }
+                  }}
                 >
                   <div className="fw-bold text-uppercase text-dark mb-3">
                     {item.logo ? (

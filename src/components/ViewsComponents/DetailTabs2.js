@@ -13,7 +13,7 @@ const DetailTabs2 = ({ product, nft_data }) => {
 
   return (
     <section className="mt-5">
-      <Container className="xkxkxkxkxkkx" style={{padding: '0 !important'}}>
+      <Container className="xkxkxkxkxkkx">
         <Tab.Container defaultActiveKey="properties">
           <Nav variant="tabs" className="flex-column flex-sm-row">
             <Nav.Item>

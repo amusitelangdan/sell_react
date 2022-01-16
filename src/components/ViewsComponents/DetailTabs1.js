@@ -114,7 +114,7 @@ const DetailTabs1 = memo(
             <Tab.Content className="py-4">
               <Tab.Pane eventKey="first" className="px-3">
                 <Row>
-                  <Col>{description}</Col>
+                  <Col style={{ overflowX: "auto" }}>{description}</Col>
                   {/* {groupedAdditionalInfo.map((infoBlock, index) => (
                   <Col key={index} md="12">
                     <Table className="text-sm">
@@ -196,7 +196,7 @@ const DetailTabs1 = memo(
               </Tab.Pane>
               <Tab.Pane eventKey="third">
                 <Row className="mb-5">
-                  <Col lg="10" xl="9">
+                  <Col lg="10" xl="9"  style={{ overflowX: "auto", minHeight: 150 }}>
                     {comments.map((item, index) => (
                       <div key={index}>{item}</div>
                     ))}

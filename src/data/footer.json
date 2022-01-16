@@ -2,18 +2,21 @@
   {
     "title": "<div class='fw-bold text-uppercase text-lg text-dark mb-3'><img src='/img/logo/logo.png' style='height: 30px'/></div>",
     "logo": true,
-    "lg": "4"
+    "lg": "4",
+    "link": "/"
   },
   {
     "title": "marketplace",
     "links": [],
     "lg": "2",
-    "md": "6"
+    "md": "6",
+    "link": "/nfts"
   },
   {
     "title": "about us",
     "links": [],
     "lg": "2",
-    "md": "6"
+    "md": "6",
+    "link": ""
   }
 ]
