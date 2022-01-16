@@ -143,7 +143,7 @@ export default function Home(props) {
                             __nfts.forEach((item) => {
                               if (item.id === d.id) {
                                 item.is_star = !item.is_star;
-                                item.star = item.is_star ? item.star - 1 : item.star + 1;
+                                item.star = d.is_star ? item.star - 1 : item.star + 1;
                               }
                             })
                             setNefts(__nfts);
